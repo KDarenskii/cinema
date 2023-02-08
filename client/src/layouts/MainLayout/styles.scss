@@ -1,0 +1,15 @@
+@import "../../assets/styles/vars.scss";
+
+.main-layout {
+    padding: 30px 0;
+    // .main-layout__wrapper
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 60px minmax(0, auto);
+        gap: 30px;
+        @media (max-width: $tablet) {
+            grid-template-rows: 60px minmax(0, auto);
+            grid-template-columns: minmax(0, auto);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "../../../assets/styles/vars.scss";
+
+.card-info {
+    &--absolut {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+    // .card-info__item
+    &__item {
+        font-size: 11px;
+        color: $grey;
+        &:not(:first-child) {
+            &::before {
+                content: " · ";
+            }
+        }
+        @media (min-width: $pcBig) {
+            font-size: 13px;
+        }
+        &--big {
+            font-size: 15px;
+        }
+    }
+    // .card-info__title
+    &__title {
+        color: $white;
+        line-height: 1;
+        margin-top: 3px;
+        @media (min-width: $pcBig) {
+            font-size: 18px;
+        }
+        &--big {
+            font-size: 23px;
+            @media (max-width: $tablet) {
+                font-size: 21px;
+            }
+            @media (max-width: $mobileMiddle) {
+                font-size: 19px;
+            }
+        }
+    }
+}

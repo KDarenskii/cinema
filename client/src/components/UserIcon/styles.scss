@@ -1,0 +1,11 @@
+@import "../../assets/styles/vars.scss";
+
+.user-icon {
+    // .user-icon__img
+    &__img {
+        width: 30px;
+        height: 30px;
+        border: 1px solid $white;
+        border-radius: 100%;
+    }
+}

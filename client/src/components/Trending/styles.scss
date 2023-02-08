@@ -1,0 +1,11 @@
+@import "../../assets/styles/vars.scss";
+
+.trending {
+    // .trending__title
+    &__title {
+        margin-bottom: 30px;
+        @media (max-width: $tablet) {
+            margin-bottom: 13px;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@import "../../assets/styles/vars.scss";
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: $blue;
+    @media (max-width: $tablet) {
+        height: 60px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    // .sidebar__logo-icon
+    &__logo-icon {
+        font-size: 27px;
+        color: #ff5757;
+        transition: color 0.2s ease-in;
+        &:hover {
+            color: $red;
+        }
+    }
+    // .sidebar__menu
+    &__menu {
+        margin-top: 30px;
+        @media (max-width: $tablet) {
+            margin-top: 0;
+        }
+    }
+    // .sidebar__user-icon
+    &__user-icon {
+        text-align: center;
+        margin-top: auto;  
+        @media (max-width: $tablet) {
+            margin-top: 0;
+        }
+    }
+}
