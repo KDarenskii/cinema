@@ -1,0 +1,28 @@
+.reviews {
+    // .reviews__title
+    &__title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    // .reviews__btn
+    &__btn {
+        margin-bottom: 30px;
+    }
+    // .reviews__content
+    &__content {
+        display: flex;
+        gap: 30px;
+    }
+    // .reviews__wrapper
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    // .reviews__info
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

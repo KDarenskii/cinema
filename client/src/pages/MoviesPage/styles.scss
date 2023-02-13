@@ -1,0 +1,14 @@
+.movies-page {
+    // .movies-page__search
+    &__search {
+        margin-bottom: 20px;
+    }
+    // .movies-page__title
+    &__title {
+        margin-bottom: 40px;
+    }
+    // .movies-page__list-message
+    &__list-message {
+        margin-top: 30px;
+    }
+}

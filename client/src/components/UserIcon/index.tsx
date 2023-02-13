@@ -15,7 +15,7 @@ const UserIcon: React.FC<Props> = ({ src, className }) => {
 
     return (
         <div className={cn("user-icon", className)}>
-            {isAuth ? <img className="user-icon__img" src={src} alt="User" /> : <MenuLink icon={"user"} />}
+            {isAuth ? <img className="user-icon__img" src={src} alt="User" /> : <MenuLink to={''} icon={"user"} />}
         </div>
     );
 };

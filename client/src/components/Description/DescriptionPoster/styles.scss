@@ -1,0 +1,10 @@
+@import "../../../assets/styles/vars.scss";
+
+.description-poster {
+    // .description-poster__img
+    &__img {
+        @media (max-width: $tablet) {
+            height: 300px;
+        }
+    }
+}

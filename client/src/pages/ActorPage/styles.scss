@@ -1,0 +1,8 @@
+@import "../../assets/styles/vars.scss";
+
+.actor-page {
+    padding: 0 130px;
+    @media (max-width: $pcBig) {
+        padding: 0;
+    }
+}

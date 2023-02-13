@@ -1,0 +1,25 @@
+@import "../../../../assets/styles/vars.scss";
+
+.description-item {
+    display: flex;
+    align-items: baseline;
+    padding: 5px 0;
+    // .description-item__name
+    &__name {
+        font-size: 14px;
+        color: rgba($white, 0.6);
+        width: 160px;
+        flex-shrink: 0;
+        @media (max-width: $mobileMiddle) {
+            width: 130px;
+        }
+    }
+    // .description-item__value
+    &__value {
+        &:not(:last-child) {
+            &::after {
+                content: ", ";
+            }
+        }
+    }
+}

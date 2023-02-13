@@ -1,0 +1,53 @@
+@import "../../../assets/styles/vars.scss";
+
+.review {
+    background-color: $grey;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    &--positive {
+        background-color: #7dc77d;
+    }
+    &--negative {
+        background-color: #d96464;
+    }
+    // .review__title
+    &__title {
+        font-size: 21px;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    // .review__content
+    &__content {
+        overflow: hidden;
+        max-height: 97px;
+        &--full {
+            max-height: none;
+        }
+    }
+    // review__text
+    &__text {
+        font-size: 16px;
+    }
+    // review__view-btn
+    &__view-btn {
+        background-color: white;
+        border-radius: 5px;
+        padding: 3px 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    // .reviews__actions
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    // .reviews__actions-btn 
+    &__actions-btn {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+}

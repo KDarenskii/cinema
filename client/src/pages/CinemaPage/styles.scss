@@ -1,0 +1,12 @@
+@import "../../assets/styles/vars.scss";
+
+.cinema-page {
+    padding: 0 130px;
+    @media (max-width: $pcBig) {
+        padding: 0;
+    }
+    // .cinema-page__info
+    &__info {
+        margin-bottom: 70px;
+    }
+}

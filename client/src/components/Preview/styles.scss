@@ -1,22 +1,30 @@
 @import "../../assets/styles/vars.scss";
 
-.card {
+.preview {
     transition: transform 1s ease;
-    &:hover {
-        transform: scale(1.05);
+    height: 100%;
+    @media (min-width: $tablet) {
+        &:hover {
+            transform: scale(1.05);
+        }
     }
-    // .card__body
+    // .preview__body
     &__body {
+        display: flex;
+        flex-direction: column;
         position: relative;
+        height: 100%;
     }
-    // .card__photo-box
+    // .preview__photo-box
     &__photo-box {
         border-radius: 10px;
         overflow: hidden;
         position: relative;
         margin-bottom: 2px;
+        max-height: 208px;
+        height: 100%;
     }
-    // .card__img
+    // .preview__img
     &__img {
         display: block;
         height: 100%;
@@ -24,13 +32,13 @@
         object-fit: cover;
         transition: transform 2s ease-out;
     }
-    // .card__bookmark
+    // .preview__bookmark
     &__bookmark {
         position: absolute;
         top: 10px;
         right: 10px;
     }
-    // .card__info
+    // .preview__info
     &__info {
         margin-top: 3px;
     }

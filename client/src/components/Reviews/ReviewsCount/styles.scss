@@ -1,0 +1,38 @@
+@import "../../../assets/styles/vars.scss";
+
+.reviews-count {
+    padding-left: 6px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    &--active{
+        border-color: orange;
+    }
+    // .reviews-count__wrapper
+    &__wrapper {
+        display: flex;
+        gap: 4px;
+    }
+    // .reviews-count__amount
+    &__amount {
+        font-size: 28px;
+        &--positive {
+            color: $green;
+        }
+        &--negative {
+            color: $red;
+        }
+        &--neutral {
+            color: $grey;
+        }
+    }
+    // .reviews-count__percents
+    &__percents {
+        font-size: 16px;
+        align-self: flex-end;
+        padding-bottom: 3px;
+    }
+    // .reviews-count__type
+    &__type {
+        font-size: 14px;
+    }
+}

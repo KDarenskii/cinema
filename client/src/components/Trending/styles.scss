@@ -1,6 +1,28 @@
 @import "../../assets/styles/vars.scss";
 
 .trending {
+    // .trending__wrapper
+    &__wrapper {
+        display: flex;
+        gap: 30px;
+    }
+    // .trending__loader
+    &__loader {
+        @media (max-width: $mobile) {
+            &:first-child {
+                display: none;
+            }
+        }
+        @media (max-width: $mobileSmall) {
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+    // .trending__slide
+    &__slide {
+        height: auto;
+    }
     // .trending__title
     &__title {
         margin-bottom: 30px;

@@ -1,0 +1,359 @@
+{
+  "trends": [
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/af904257-c70c-4b92-82ea-50d2bf986dac/1920x",
+      "title": "Avatar: The Way of Water",
+      "type": "movie",
+      "age": 16,
+      "year": "2022",
+      "duration": 1,
+      "id": "10"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/6fd554d4-fc73-4e71-86ec-335ccb9e2cfd/1920x",
+      "title": "The Amazing Maurice",
+      "type": "movie",
+      "age": 6,
+      "year": "2022",
+      "duration": 1,
+      "id": "11"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/1e0ad1bd-a510-48cc-afe8-bd1b05e74bab/1920x",
+      "title": "The Gentlemen",
+      "type": "movie",
+      "age": 18,
+      "year": "2019",
+      "duration": 2,
+      "id": "12"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/e6aaae9e-17c3-4fe5-8f43-b372778cc5a4/1920x",
+      "title": "Top Gun: Maverick",
+      "type": "movie",
+      "age": 16,
+      "year": "2022",
+      "duration": 2,
+      "id": "13"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/eb784633-8800-426c-99e1-307dff620dfc/1920x",
+      "title": "Inception",
+      "type": "movie",
+      "age": 12,
+      "year": "2010",
+      "duration": 2,
+      "id": "14"
+    }
+  ],
+  "trailers": [
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/9c918339-f643-4663-a716-4655c121a674/1920x",
+      "title": "Forrest Gump",
+      "type": "movie",
+      "age": 16,
+      "year": "1994",
+      "duration": 2,
+      "id": "1"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/499746a9-8600-4036-828b-30c4cc2e7a7b/x178",
+      "title": "The Green Mile",
+      "type": "movie",
+      "age": 16,
+      "year": "1999",
+      "duration": 1,
+      "id": "2"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/c99b3794-5cb9-4299-a061-37f02af3c1b2/x178",
+      "title": "Breaking Bad",
+      "type": "serial",
+      "age": 18,
+      "year": "2008-2013",
+      "duration": 2,
+      "id": "3"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/22da022a-78da-4b31-96c0-aa7ef3c63637/x178",
+      "title": "Back to the Future",
+      "type": "movie",
+      "age": 12,
+      "year": "1985",
+      "duration": 1,
+      "id": "4"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/8d69ef7b-9f98-4414-8ed1-e38c24aa028f/x178",
+      "title": "The Sopranos",
+      "type": "serial",
+      "age": 18,
+      "year": "1999-2007",
+      "duration": 1,
+      "id": "5"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/30aef0d0-e223-4e52-a099-c06e1e36cde4/x178",
+      "title": "Interstellar",
+      "type": "movie",
+      "age": 16,
+      "year": "2004",
+      "duration": 2,
+      "id": "6"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/d73a173f-d835-4427-83aa-dcdec260b5bd/x178",
+      "title": "Pulp Fiction",
+      "type": "movie",
+      "age": 18,
+      "year": "1994",
+      "duration": 2,
+      "id": "7"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/568aa9b1-ae81-483d-a46c-94640007a510/x178",
+      "title": "Friends",
+      "type": "serial",
+      "age": 16,
+      "year": "1994-2004",
+      "duration": 1,
+      "id": "8"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/37730444-975e-4a7a-b9fe-cd73ea19c4d3/x252",
+      "title": "The Lion King",
+      "type": "movie",
+      "age": 0,
+      "year": "1994",
+      "duration": 1,
+      "id": "9"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/af904257-c70c-4b92-82ea-50d2bf986dac/1920x",
+      "title": "Avatar: The Way of Water",
+      "type": "movie",
+      "age": 16,
+      "year": "2022",
+      "duration": 1,
+      "id": "10"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/6fd554d4-fc73-4e71-86ec-335ccb9e2cfd/1920x",
+      "title": "The Amazing Maurice",
+      "type": "movie",
+      "age": 6,
+      "year": "2022",
+      "duration": 1,
+      "id": "11"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/1e0ad1bd-a510-48cc-afe8-bd1b05e74bab/1920x",
+      "title": "The Gentlemen",
+      "type": "movie",
+      "age": 18,
+      "year": "2019",
+      "duration": 2,
+      "id": "12"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/e6aaae9e-17c3-4fe5-8f43-b372778cc5a4/1920x",
+      "title": "Top Gun: Maverick",
+      "type": "movie",
+      "age": 16,
+      "year": "2022",
+      "duration": 2,
+      "id": "13"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/eb784633-8800-426c-99e1-307dff620dfc/1920x",
+      "title": "Inception",
+      "type": "movie",
+      "age": 12,
+      "year": "2010",
+      "duration": 2,
+      "id": "14"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/c8447c86-e19f-4bd1-9033-7aa549c65868/1920x",
+      "title": "Fight Club",
+      "type": "movie",
+      "age": 18,
+      "year": "1999",
+      "duration": 2,
+      "id": "15"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/dab60915-49c2-436b-9539-2337a172c45e/1920x",
+      "title": "Intouchables",
+      "type": "movie",
+      "age": 16,
+      "year": "2011",
+      "duration": 2,
+      "id": "16"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/36f5ee37-7f9b-4b37-8c8f-0ecc170e280a/1920x",
+      "title": "The Dark Knight",
+      "type": "movie",
+      "age": 16,
+      "year": "2008",
+      "duration": 2,
+      "id": "17"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/cd77527a-4c2d-4596-af14-8fca24684c72/1920x",
+      "title": "WALL·E",
+      "type": "movie",
+      "age": 0,
+      "year": "2008",
+      "duration": 2,
+      "id": "18"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/8e3b6cc5-3038-41b0-90b2-2527df6d0418/1920x",
+      "title": "Gladiator",
+      "type": "movie",
+      "age": 16,
+      "year": "2000",
+      "duration": 1,
+      "id": "19"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/d3fc9f7b-2066-466d-be48-deb7d398ded7/1920x",
+      "title": "Shameless",
+      "type": "serial",
+      "age": 18,
+      "year": "2011-2021",
+      "duration": 2,
+      "id": "20"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/73c323fd-26ac-4f3e-83e3-2b256fe3a36b/1920x",
+      "title": "Game of Thrones",
+      "type": "serial",
+      "age": 18,
+      "year": "2011-2019",
+      "duration": 2,
+      "id": "21"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/85555335-8800-4134-8dfe-2f02cf1ff767/1920x",
+      "title": "Supernatural",
+      "type": "serial",
+      "age": 16,
+      "year": "2005-2020",
+      "duration": 1,
+      "id": "22"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/bef6ffce-5744-4e00-b228-51ecd9996b45/1920x",
+      "title": "The Office",
+      "type": "serial",
+      "age": 16,
+      "year": "2005-2013",
+      "duration": 2,
+      "id": "23"
+    },
+    {
+      "imageSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/76f2e6c3-a30b-4647-b672-23632c6ea2d4/1920x",
+      "title": "Stranger Things",
+      "type": "serial",
+      "age": 16,
+      "year": "2016-2024",
+      "duration": 3,
+      "id": "24"
+    }
+  ],
+  "cinemaDescriptions": [
+    {
+      "id": "2",
+      "type": "movie",
+      "title": "The Green Mile",
+      "description": "A prisoner with a divine gift appears in a death row prison. A mystical drama based on the novel by Stephen King",
+      "posterSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/300x450",
+      "genres": [
+        "fantasy",
+        "crime",
+        "drama"
+      ],
+      "countries": [
+        "USA"
+      ],
+      "budget": 60000000,
+      "age": 16,
+      "year": "1999",
+      "profit": 136000000,
+      "directors": [
+        "Frank Darabont"
+      ],
+      "screenwriters": [
+        "Frank Darabont",
+        "Stiven King"
+      ],
+      "composers": [
+        "Thomas Newman"
+      ],
+      "actors": [
+        {
+          "name": "Tom Hanks",
+          "id": "1"
+        }
+      ],
+      "story": "Paul Edgecombe is the head of the death row unit at the Cold Mountain prison, each of whose prisoners once passes the \"green mile\" on the way to the place of execution. Paul has seen a lot of prisoners and guards during his work. However, the giant John Coffey, accused of a terrible crime, became one of the most unusual inhabitants of the block."
+    }
+  ],
+  "actors": [
+    {
+      "id": "1",
+      "posterSrc": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/3acd328c-721a-47ac-a7bf-fe7d5efb69fc/280x420",
+      "name": "Tom Hanks",
+      "career": [
+        "Actor",
+        "Director",
+        "Screenwriter"
+      ],
+      "height": 180,
+      "birthplace": {
+        "city": "Konkord",
+        "state": "California",
+        "country": "USA"
+      },
+      "genres": [
+        "drama",
+        "comedy",
+        "fantasy"
+      ],
+      "filmsNumber": 409,
+      "bestWorks": [
+        {
+          "title": "The Green Mile",
+          "id": "2"
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "title": "The best review",
+      "text": "Skfsdmfkm mflkdsmflk mflkm sfml fmdslk mglkfd mglkdfm kmdflkm gkfmdlk gmdflkm df mkdfm glkdfmg lkdfmg kdfm gmdflkgmdf kgmkdf gmkdf gmdfm gkdfm gkfdm gkdfmg mdf gmdfgklmdfgm dfkgm df gfmdgmdgmmgmmmmmmmmm mgmmmmmmmmmmmmmmmmmmmmmmmmmmmmm  gkdfmlk gdfmkl mgklfdm glkmdfk gmfdk gmfd mglkdfmg kdfmgkdm fgmdfk gmd fkglm d flgkmfdk gmfd kgmkdfgmkdfgmk dfgmkdf gmlkdfksd mflksdm flkmsdlkfl msdlkfm sdm flksdmf ksdm flksmdflk smdfkm sdlk fmslkldfmsdm ksmd fk dfkmsd lkfmsdlkl fmsdlk fmsd mflksdm fksdm flksd mfsm dfksmd lkfmskdf msld kf",
+      "cinemaId": "2",
+      "type": "neutral"
+    },
+    {
+      "id": "2",
+      "title": "The best review",
+      "text": "Skfsdmfkm mflkdsmflk mflkm sfml fmdslk mglkfd mglkdfm kmdflkm gkfmdlk gmdflkm df mkdfm glkdfmg lkdfmg kdfm gmdflkgmdf kgmkdf gmkdf gmdfm gkdfm gkfdm gkdfmg mdf gmdfgklmdfgm dfkgm df gfmdgmdgmmgmmmmmmmmm mgmmmmmmmmmmmmmmmmmmmmmmmmmmmmm  gkdfmlk gdfmkl mgklfdm glkmdfk gmfdk gmfd mglkdfmg kdfmgkdm fgmdfk gmd fkglm d flgkmfdk gmfd kgmkdfgmkdfgmk dfgmkdf gmlkdfksd mflksdm flkmsdlkfl msdlkfm sdm flksdmf ksdm flksmdflk smdfkm sdlk fmslkldfmsdm ksmd fk dfkmsd lkfmsdlkl fmsdlk fmsd mflksdm fksdm flksd mfsm dfksmd lkfmskdf msld kf",
+      "cinemaId": "2",
+      "type": "positive"
+    },
+    {
+      "id": "3",
+      "title": "The best review",
+      "text": "Skfsdmfkm mflkdsmflk mflkm sfml fmdslk mglkfd mglkdfm kmdflkm gkfmdlk gmdflkm df mkdfm glkdfmg lkdfmg kdfm gmdflkgmdf kgmkdf gmkdf gmdfm gkdfm gkfdm gkdfmg mdf gmdfgklmdfgm dfkgm df gfmdgmdgmmgmmmmmmmmm mgmmmmmmmmmmmmmmmmmmmmmmmmmmmmm  gkdfmlk gdfmkl mgklfdm glkmdfk gmfdk gmfd mglkdfmg kdfmgkdm fgmdfk gmd fkglm d flgkmfdk gmfd kgmkdfgmkdfgmk dfgmkdf gmlkdfksd mflksdm flkmsdlkfl msdlkfm sdm flksdmf ksdm flksmdflk smdfkm sdlk fmslkldfmsdm ksmd fk dfkmsd lkfmsdlkl fmsdlk fmsd mflksdm fksdm flksd mfsm dfksmd lkfmskdf msld kf",
+      "cinemaId": "2",
+      "type": "negative"
+    }
+  ],
+  "bookmarks": []
+}

@@ -8,7 +8,7 @@ type Props = {
 
 const CardsWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <div className='cards-wrapper'>{children}</div>
+    <div className='previews-wrapper'>{children}</div>
   )
 }
 

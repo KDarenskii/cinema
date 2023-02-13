@@ -17,6 +17,10 @@
             color: $white;
         }
     }
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
     &--active {
         background-color: #868686;
         opacity: 1;
