@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server -p 3500 -w data/db.json",
+    "start": "json-server-auth -p 3500 data/db.json -r data/routes.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "json-server": "^0.17.1"
+    "json-server": "^0.17.1",
+    "json-server-auth": "^2.1.0"
   }
 }

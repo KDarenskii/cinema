@@ -1,15 +1,18 @@
 @import "../../../assets/styles/vars.scss";
 
 .review {
-    background-color: $grey;
+    background-color: rgba($grey, 0.4);
     max-width: 600px;
     padding: 20px;
     border-radius: 10px;
+    @media (max-width: $mobileMiddle) {
+        max-width: 100%;
+    }
     &--positive {
-        background-color: #7dc77d;
+        background-color: rgb(125 224 125 / 40%);
     }
     &--negative {
-        background-color: #d96464;
+        background-color: rgba(#d24747, 0.5);
     }
     // .review__title
     &__title {
@@ -21,6 +24,7 @@
     &__content {
         overflow: hidden;
         max-height: 97px;
+        margin-bottom: 15px;
         &--full {
             max-height: none;
         }
@@ -34,20 +38,22 @@
         background-color: white;
         border-radius: 5px;
         padding: 3px 5px;
-        margin-top: 15px;
         margin-bottom: 15px;
     }
     // .reviews__actions
     &__actions {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
         gap: 10px;
+        @media (max-width: $mobileSmall) {
+            flex-direction: column-reverse;
+        }
     }
-    // .reviews__actions-btn 
-    &__actions-btn {
+    // .reviews__actions-wrapper
+    &__actions-wrapper {
         display: flex;
+        gap: 10px;
         align-items: center;
-        gap: 3px;
     }
 }

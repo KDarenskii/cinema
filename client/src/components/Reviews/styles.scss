@@ -1,28 +1,57 @@
+@import "../../assets/styles/vars.scss";
+
 .reviews {
     // .reviews__title
     &__title {
         font-size: 30px;
         margin-bottom: 20px;
+        @media (max-width: $tablet) {
+            text-align: center;
+        }
     }
     // .reviews__btn
     &__btn {
+        display: block;
         margin-bottom: 30px;
+        @media (max-width: $tablet) {
+            margin: 0 auto 30px;
+        }
     }
     // .reviews__content
     &__content {
         display: flex;
         gap: 30px;
+        @media (max-width: $tablet) {
+            justify-content: center;
+        }
+        @media (max-width: $mobileMiddle) {
+            flex-direction: column-reverse;
+        }
+    }
+    // .reviews__inner
+    &__inner {
+        max-width: 600px;
+        width: 100%;
+    }
+    // .reviews__creation
+    &__creation {
+        margin-bottom: 20px;
     }
     // .reviews__wrapper
     &__wrapper {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        margin-bottom: 20px;
     }
     // .reviews__info
     &__info {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        @media (max-width: $mobileMiddle) {
+            flex-direction: row;
+            justify-content: center;
+        }
     }
 }

@@ -1,0 +1,27 @@
+@import "../../../assets/styles/vars.scss";
+
+.select {
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid #646464;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+    font-size: 18px;
+    border-radius: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+    color: $white;
+    font-weight: 300;
+    appearance: none;
+    line-height: 20px;
+    &:focus {
+        border-color: $white;
+    }
+    &::placeholder {
+        color: $grey;
+    }
+    &:disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+}

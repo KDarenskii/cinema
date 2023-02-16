@@ -9,17 +9,27 @@ type Params = {
     limit?: number;
 };
 
-export const fetchReviews = createAsyncThunk<IReview[], Params>(
+type Response = {
+    totalAmount: number;
+    reviews: IReview[];
+}
+
+export const fetchReviews = createAsyncThunk<Response, Params>(
     "reviews/fetchReviews",
     async function ({ cinemaId, page = 1, limit = 3, type }) {
-        const response = await api.get("reviews", {
+        const response = await api.get<IReview[]>("reviews", {
             params: {
                 cinemaId,
                 type,
                 _limit: limit,
-                _page: page
+                _page: page,
+                _sort: "date",
+                _order: "desc"
             },
         });
-        return response.data;
+        return {
+            reviews: response.data,
+            totalAmount: Number(response.headers["x-total-count"])
+        };
     }
 );

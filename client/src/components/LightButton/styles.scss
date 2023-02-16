@@ -12,4 +12,11 @@
     &:hover {
         background-color: darken(#babbbc, 0.1);
     }
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            background-color: #f7f7f7;
+        }
+    }
 }

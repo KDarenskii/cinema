@@ -1,0 +1,26 @@
+@import "../../../assets/styles/vars.scss";
+
+.textarea {
+    min-height: 100px;
+    height: auto;
+    background-color: transparent;
+    border: 1px solid #646464;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+    font-size: 18px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: $white;
+    font-weight: 300;
+    line-height: 20px;
+    resize: none;
+    &:focus {
+        border-color: $white;
+    }
+    &::placeholder {
+        color: $grey;
+    }
+    &:disabled {
+        opacity: 0.5;
+    }
+}

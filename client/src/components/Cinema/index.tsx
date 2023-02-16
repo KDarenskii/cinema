@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { api } from "../../api";
 import { CINEMA_TYPE } from "../../constants/cinemaType";
 import { ICinema, ITrailer } from "../../models/cinema";
@@ -9,64 +9,49 @@ import DescriptionInfo from "../Description/DescriptionInfo";
 import DescriptionInfoItem from "../Description/DescriptionInfo/DescriptionInfoItem";
 import DescriptionList from "../Description/DescriptionList";
 import DescriptionPoster from "../Description/DescriptionPoster";
-import LightButton from "../LightButton";
 import Preview from "../Preview";
 import cn from "classnames";
+import CinemaWatchButton from "./CinemaWatchButton";
+import PreviewLoader from "../Preview/PreviewLoader";
+import RetryError from "../RetryError";
 
 import "./styles.scss";
 
 type Props = {
+    cinema: ICinema;
     className?: string;
 };
 
-const Cinema: React.FC<Props> = ({ className }) => {
-    const { id = "" } = useParams();
-
-    const [isDescriptionLoading, setIsDescriptionLoading] = React.useState(false);
-    const [descriptionError, setDescriptionError] = React.useState<string | null>(null);
-    const [cinema, setCinema] = React.useState<ICinema>({} as ICinema);
-
-    const [isTrailerLoading, setIsTrailerLoading] = React.useState(false);
-    const [trailerError, setTrailerError] = React.useState<string | null>(null);
+const Cinema: React.FC<Props> = ({ cinema, className }) => {
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [error, setError] = React.useState<string | null>(null);
     const [trailer, setTrailer] = React.useState({} as ITrailer);
 
+    const fetchTrailer = React.useCallback(async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const response = await api.get("trailers/" + cinema.id);
+            setTrailer(response.data);
+        } catch (error) {
+            const err = error as any;
+            setError(err.message ?? null);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [cinema.id]);
+
     React.useEffect(() => {
-        const fetchCinema = async () => {
-            setIsDescriptionLoading(true);
-            setDescriptionError(null);
-            try {
-                const response = await api.get("cinemaDescriptions/" + id);
-                setCinema(response.data);
-            } catch (error) {
-                const err = error as any;
-                setDescriptionError(err.message ?? null);
-            } finally {
-                setIsDescriptionLoading(false);
-            }
-        };
-        const fetchTrailer = async () => {
-            setIsTrailerLoading(true);
-            setTrailerError(null);
-            try {
-                const response = await api.get("trailers/" + id);
-                setTrailer(response.data);
-                console.log(response);
-            } catch (error) {
-                const err = error as any;
-                setTrailerError(err.message ?? null);
-            } finally {
-                setIsTrailerLoading(false);
-            }
-        };
         fetchTrailer();
-        fetchCinema();
-    }, [id]);
+    }, [fetchTrailer]);
 
     return (
         <section className={cn("cinema", className)}>
             <div className="cinema__intro">
                 <DescriptionPoster className="cinema__intro-poster" src={cinema.posterSrc} />
-                <Preview className="cinema__intro-preview" preview={trailer} />
+                {error && <RetryError onClick={fetchTrailer} message={error} />}
+                {isLoading && <PreviewLoader className="cinema__intro-loader" />}
+                {!error && !isLoading && <Preview className="cinema__intro-preview" preview={trailer} />}
             </div>
             <div className="cinema__content">
                 <DescriptionHeader
@@ -77,7 +62,7 @@ const Cinema: React.FC<Props> = ({ className }) => {
 
                 <DescriptionPoster className="cinema__content-intro-poster" src={cinema.posterSrc} />
 
-                <LightButton className="cinema__content-btn">Watch film</LightButton>
+                <CinemaWatchButton className="cinema__content-btn" videoId={cinema.videoId} />
 
                 <div className="cinema__content-about">
                     <DescriptionInfo title={cinema.type === CINEMA_TYPE.MOVIE ? "About film" : "About serial"}>
@@ -107,7 +92,11 @@ const Cinema: React.FC<Props> = ({ className }) => {
                     <p className="cinema__content-story-text">{cinema.story}</p>
                 </div>
 
-                <Preview className="cinema__content-intro-preview" preview={trailer} />
+                <div className="cinema__content-trailer">
+                    {error && <RetryError onClick={fetchTrailer} message={error} />}
+                    {isLoading && <PreviewLoader className="cinema__content-trailer-loader" />}
+                    {!error && !isLoading && <Preview className="cinema__content-trailer-preview" preview={trailer} />}
+                </div>
             </div>
         </section>
     );

@@ -9,8 +9,14 @@ import {
     faSearch,
     faThumbsUp,
     faThumbsDown,
+    faTrashAlt,
+    faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark as regularBookmark, faThumbsUp as regularThumsUp, faThumbsDown as regulatThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import {
+    faBookmark as regularBookmark,
+    faThumbsUp as regularThumsUp,
+    faThumbsDown as regulatThumbsDown,
+} from "@fortawesome/free-regular-svg-icons";
 
 library.add(
     faBookmark,
@@ -24,5 +30,7 @@ library.add(
     faThumbsDown,
     faThumbsUp,
     regularThumsUp,
-    regulatThumbsDown
+    regulatThumbsDown,
+    faTrashAlt,
+    faChevronDown
 );

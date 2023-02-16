@@ -1,0 +1,24 @@
+.register-form {
+    // .register-form__alert
+    &__alert {
+        padding: 15px 10px;
+        margin-bottom: 10px;
+    }
+    // .register__item
+    &__item {
+        margin-bottom: 10px;
+    }
+    // .register__input
+    &__input {
+        width: 100%;
+    }
+    // .register-form_error
+    &__error {
+        padding: 3px 0 0 20px;
+    }
+    // .register__btn
+    &__btn {
+        display: block;
+        margin: 0 auto 15px;
+    }
+}

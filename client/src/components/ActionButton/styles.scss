@@ -9,6 +9,9 @@
     color: $black;
     line-height: 1.5;
     transition: background-color 0.2s ease, color 0.2s ease;
+    &:disabled {
+        opacity: 0.5;
+    }
     &--success {
         background-color: rgba($green, 0.5);
         &:hover {

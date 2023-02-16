@@ -1,0 +1,48 @@
+@import "../../../assets/styles/vars.scss";
+
+.review-creation {
+    background-color: #2c2c38;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgb(77 77 77 / 60%);
+    // .review-creation__form
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+    // .review-creation__preview
+    &__preview {
+        margin-bottom: 10px;
+    }
+    // .review-creation__form-select
+    &__form-select {
+        display: block;
+        background: url("./../../../assets/img/arrow-down.svg") right 20px center no-repeat;
+        background-size: 18px;
+        color: $white;
+        width: 100%;
+    }
+    // .review-creation__form-option
+    &__form-option {
+        background-color: #2c2c38;
+        color: $white;
+    }
+    // .review-creation__form-input
+    &__form-input {
+        width: 100%;
+    }
+    // .review-creation__form-textarea
+    &__form-textarea {
+        width: 100%;
+    }
+    // .review-creation__form-error
+    &__form-error {
+        padding: 5px 0 0 20px;
+    }
+    // .review-creation__preview-btn
+    &__preview-btn {
+        width: 100%;
+    }
+}

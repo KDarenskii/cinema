@@ -26,4 +26,5 @@ export interface ICinema extends Base {
     composers: string[];
     actors: { name: string; id: string }[];
     story: string;
+    videoId: string;
 }

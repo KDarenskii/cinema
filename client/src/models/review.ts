@@ -6,4 +6,11 @@ export interface IReview {
     title: string;
     text: string;
     type: REVIEW_TYPE;
+    isLiked: boolean;
+    isDisliked: boolean;
+    likesAmount: number;
+    dislikesAmount: number;
+    date: string;
 }
+
+export type IReviewPreview = Pick<IReview, "title" | "text" | "type">;

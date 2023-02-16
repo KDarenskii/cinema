@@ -17,6 +17,11 @@
     &__intro-poster {
         margin-bottom: 20px;
     }
+    // .cinema__intro-loader
+    &__intro-loader {
+        display: block;
+        height: auto;
+    }
     // .cinema__intro-preview
     &__intro-preview {
         height: auto;
@@ -86,15 +91,24 @@
             }
         }
     }
-    // .cinema__content-intro-preview
-    &__content-intro-preview {
+    // .cinema__content-trailer
+    &__content-trailer {
         display: none;
         @media (max-width: $tablet) {
             display: block;
-            height: auto;
-            max-width: 340px;
-            margin: 0 auto;
         }
+    }
+    // .cinema__content-trailer-loader
+    &__content-trailer-loader {
+        display: block;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+    // .cinema__content-intro-preview
+    &__content-trailer-preview {
+        height: auto;
+        max-width: 340px;
+        margin: 0 auto;
     }
     // .cinema__content-story
     &__content-story {

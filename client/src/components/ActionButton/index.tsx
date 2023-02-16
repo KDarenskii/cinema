@@ -5,7 +5,7 @@ import "./styles.scss";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     colorType: "success" | "error";
-    isActive: boolean;
+    isActive?: boolean;
 }
 
 const ActionButton: React.FC<Props> = ({ colorType, isActive, className, children, ...rest }) => {
