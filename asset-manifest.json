@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/cinema/static/css/main.3420ffbc.css",
+    "main.js": "/cinema/static/js/main.dead7f5b.js",
+    "Serials.css": "/cinema/static/css/Serials.d79d5e67.chunk.css",
+    "Serials.js": "/cinema/static/js/Serials.f22f027a.chunk.js",
+    "Movies.css": "/cinema/static/css/Movies.06363c78.chunk.css",
+    "Movies.js": "/cinema/static/js/Movies.998bf39e.chunk.js",
+    "Cinema.css": "/cinema/static/css/Cinema.61d38a4b.chunk.css",
+    "Cinema.js": "/cinema/static/js/Cinema.a006550a.chunk.js",
+    "Actor.css": "/cinema/static/css/Actor.45f233ed.chunk.css",
+    "Actor.js": "/cinema/static/js/Actor.1b40eb54.chunk.js",
+    "Bookmarks.css": "/cinema/static/css/Bookmarks.50d84673.chunk.css",
+    "Bookmarks.js": "/cinema/static/js/Bookmarks.62154817.chunk.js",
+    "static/js/710.2865fd45.chunk.js": "/cinema/static/js/710.2865fd45.chunk.js",
+    "index.html": "/cinema/index.html",
+    "static/media/arrow-down.svg": "/cinema/static/media/arrow-down.3a018d6fd78ed9a7852b.svg",
+    "main.3420ffbc.css.map": "/cinema/static/css/main.3420ffbc.css.map",
+    "main.dead7f5b.js.map": "/cinema/static/js/main.dead7f5b.js.map",
+    "Serials.d79d5e67.chunk.css.map": "/cinema/static/css/Serials.d79d5e67.chunk.css.map",
+    "Serials.f22f027a.chunk.js.map": "/cinema/static/js/Serials.f22f027a.chunk.js.map",
+    "Movies.06363c78.chunk.css.map": "/cinema/static/css/Movies.06363c78.chunk.css.map",
+    "Movies.998bf39e.chunk.js.map": "/cinema/static/js/Movies.998bf39e.chunk.js.map",
+    "Cinema.61d38a4b.chunk.css.map": "/cinema/static/css/Cinema.61d38a4b.chunk.css.map",
+    "Cinema.a006550a.chunk.js.map": "/cinema/static/js/Cinema.a006550a.chunk.js.map",
+    "Actor.45f233ed.chunk.css.map": "/cinema/static/css/Actor.45f233ed.chunk.css.map",
+    "Actor.1b40eb54.chunk.js.map": "/cinema/static/js/Actor.1b40eb54.chunk.js.map",
+    "Bookmarks.50d84673.chunk.css.map": "/cinema/static/css/Bookmarks.50d84673.chunk.css.map",
+    "Bookmarks.62154817.chunk.js.map": "/cinema/static/js/Bookmarks.62154817.chunk.js.map",
+    "710.2865fd45.chunk.js.map": "/cinema/static/js/710.2865fd45.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3420ffbc.css",
+    "static/js/main.dead7f5b.js"
+  ]
+}
