@@ -16,6 +16,8 @@ import { nanoid } from "@reduxjs/toolkit";
 import { postReview } from "../../../store/reviews/thunks/postReview";
 import { showNotion } from "../../../utils/showNotion";
 import { NOTION } from "../../../constants/notion";
+import { LOGIN_ROUTE } from "../../../constants/routesPathnames";
+import { useFromNavigate } from "../../../hooks/useFromNavigate";
 
 import "./styles.scss";
 
@@ -33,8 +35,8 @@ interface Values {
 
 const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
     const [isPreviewing, setIsPreviewing] = React.useState(false);
-
     const dispatch = useAppDispatch();
+    const navigateFrom = useFromNavigate();
 
     const initialValues: Values = {
         type: REVIEW_TYPE.NONE,
@@ -55,10 +57,15 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
         };
 
         try {
-            await dispatch(postReview(newReview));
+            await dispatch(postReview(newReview)).unwrap();
             showNotion(NOTION.SUCCESS, "Review created");
         } catch (error) {
-            showNotion(NOTION.ERROR, "Failed to create review");
+            const err = error as any;
+            if (err.isAuthError) {
+                navigateFrom(LOGIN_ROUTE);
+            } else {
+                showNotion(NOTION.ERROR, "Failed to create review");
+            }
         } finally {
             setIsCreating(false);
         }

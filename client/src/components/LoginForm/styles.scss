@@ -1,0 +1,24 @@
+.login-form {
+    // .login-form__alert
+    &__alert {
+        padding: 15px 10px;
+        margin-bottom: 10px;
+    }
+    // .login__item
+    &__item {
+        margin-bottom: 10px;
+    }
+    // .login__input
+    &__input {
+        width: 100%;
+    }
+    // .login-form_error
+    &__error {
+        padding: 3px 0 0 20px;
+    }
+    // .login__btn
+    &__btn {
+        display: block;
+        margin: 0 auto 15px;
+    }
+}

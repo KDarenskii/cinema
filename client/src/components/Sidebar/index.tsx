@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HOME_ROUTE } from "../../constants/routesPathnames";
-
-import "./styles.scss";
 import Menu from "./Menu";
 import UserIcon from "../UserIcon";
+
+import "./styles.scss";
 
 const Sidebar: React.FC = () => {
     return (

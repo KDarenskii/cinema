@@ -41,7 +41,7 @@ const Actor: React.FC<Props> = ({ actor }) => {
                     <DescriptionList className="actor__content-about-list" title="Best films">
                         {actor.bestWorks &&
                             actor.bestWorks.map((work, index) => (
-                                <Link className="actor__content-about-link" to={"/cinema/" + work.id} key={index}>
+                                <Link className="actor__content-about-link" to={"/cinema/film/" + work.id} key={index}>
                                     {work.title}
                                 </Link>
                             ))}

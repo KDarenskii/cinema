@@ -1,4 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
+
+// ------ Solid Icons ------- //
 import {
     faBookmark,
     faVideo,
@@ -11,7 +13,12 @@ import {
     faThumbsDown,
     faTrashAlt,
     faChevronDown,
+    faSignOutAlt,
+    faLock,
+    faFrownOpen
 } from "@fortawesome/free-solid-svg-icons";
+
+// ------ Regular Icons ------ //
 import {
     faBookmark as regularBookmark,
     faThumbsUp as regularThumsUp,
@@ -32,5 +39,8 @@ library.add(
     regularThumsUp,
     regulatThumbsDown,
     faTrashAlt,
-    faChevronDown
+    faChevronDown,
+    faSignOutAlt,
+    faLock,
+    faFrownOpen
 );

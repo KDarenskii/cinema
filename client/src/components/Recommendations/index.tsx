@@ -1,8 +1,8 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSearchParams } from "react-router-dom";
-import { api } from "../../api";
 import { ITrailer } from "../../models/cinema";
+import TrailerService from "../../services/TrailerService";
 import CircleLoader from "../CircleLoader";
 import EndListMessage from "../EndListMessage";
 import Preview from "../Preview";
@@ -36,7 +36,7 @@ const Recommendations: React.FC = () => {
             setError(null);
             setIsLoading(true);
             try {
-                const response = await api.get<ITrailer[]>("trailers", {
+                const response = await TrailerService.fetchTrailers({
                     params: {
                         q: searchParams.get("q"),
                         _page: page,
@@ -79,7 +79,7 @@ const Recommendations: React.FC = () => {
                     style={{ overflow: "initial" }}
                     endMessage={
                         <EndListMessage
-                            className="movies-page__list-message"
+                            className="recommendations__list-message"
                             message="There is no more content to show you ^_^"
                         />
                     }

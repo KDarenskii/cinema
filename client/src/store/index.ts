@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import bookmarksReducer from "./bookmarks/bookmarksSlice";
 import reviewsReducer from "./reviews/reviewsSlice";
+import userReducer from "./user/userSlice";
 
 const store = configureStore({
     reducer: {
         bookmarks: bookmarksReducer,
-        reviews: reviewsReducer
+        reviews: reviewsReducer,
+        user: userReducer
     }
 })
 

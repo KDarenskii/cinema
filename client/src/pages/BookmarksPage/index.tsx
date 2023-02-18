@@ -23,7 +23,7 @@ const BookmarksPage: React.FC = () => {
             <section className="bookmarks-page__movies">
                 <SectionTitle className="bookmarks-page__title" text="Bookmarked Movies" />
                 {error && <RetryError message={error} onClick={() => dispatch(fetchBookmarks())} />}
-                {bookmarks.movies.length < 1 && (
+                {!error && bookmarks.movies.length < 1 && (
                     <Alert type={ALERT.INFO} message={"You have't bookmarked any movie yet"} />
                 )}
                 <PreviewsWrapper>
@@ -36,7 +36,7 @@ const BookmarksPage: React.FC = () => {
             <section className="bookmarks-page__serials">
                 <SectionTitle className="bookmarks-page__title" text="Bookmarked TV Series" />
                 {error && <RetryError message={error} onClick={() => dispatch(fetchBookmarks())} />}
-                {bookmarks.serials.length < 1 && (
+                {!error && bookmarks.serials.length < 1 && (
                     <Alert type={ALERT.INFO} message={"You have't bookmarked any TV serial yet"} />
                 )}
                 <PreviewsWrapper>

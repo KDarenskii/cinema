@@ -2,7 +2,6 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSearchParams } from "react-router-dom";
 import { CircleLoader } from "react-spinners";
-import { api } from "../../api";
 import EndListMessage from "../../components/EndListMessage";
 import Preview from "../../components/Preview";
 import PreviewLoader from "../../components/Preview/PreviewLoader";
@@ -12,11 +11,11 @@ import Search from "../../components/Search";
 import SectionTitle from "../../components/SectionTitle";
 import { CINEMA_TYPE } from "../../constants/cinemaType";
 import { ITrailer } from "../../models/cinema";
+import TrailerService from "../../services/TrailerService";
 
 import "./styles.scss";
 
 const SerialsPage: React.FC = () => {
-
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
     const [list, setList] = React.useState<ITrailer[]>([]);
@@ -32,13 +31,12 @@ const SerialsPage: React.FC = () => {
         setList([]);
     }, [searchParams]);
 
-
     const fetchSerials = React.useCallback(
         async (page: number) => {
             setError(null);
             setIsLoading(true);
             try {
-                const response = await api.get<ITrailer[]>("trailers", {
+                const response = await TrailerService.fetchTrailers({
                     params: {
                         type: CINEMA_TYPE.SERIAL,
                         q: searchParams.get("q"),
@@ -84,7 +82,7 @@ const SerialsPage: React.FC = () => {
                         style={{ overflow: "initial" }}
                         endMessage={
                             <EndListMessage
-                                className="movies-page__list-message"
+                                className="serials-page__list-message"
                                 message="There is no more content to show you ^_^"
                             />
                         }

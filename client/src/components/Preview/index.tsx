@@ -13,16 +13,17 @@ type Props = {
     preview: ITrailer;
     className?: string;
     size?: "big";
+    onClick?: () => void;
 };
 
-const Preview: React.FC<Props> = ({ preview, size, className }) => {
+const Preview: React.FC<Props> = ({ preview, size, className, onClick }) => {
     const { imageSrc, age, id, title, type, year } = preview;
 
     const isBookmarked = useAppSelector((state) => selectBookmarkById(state, id));
 
     return (
-        <article className={cn("preview", className)}>
-            <Link className="preview__body" to={"/cinema/" + id}>
+        <article className={cn("preview", className)} onClick={onClick}>
+            <Link className="preview__body" to={"/cinema/film/" + id}>
                 <div className="preview__photo-box">
                     <img className="preview__img" src={imageSrc} alt="Preview" />
                     <Bookmark className="preview__bookmark" isActive={Boolean(isBookmarked)} preview={preview} />

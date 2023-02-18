@@ -7,6 +7,8 @@ import { deleteBookmark } from "../../store/bookmarks/thunks/deleteBookmark";
 import { showNotion } from "../../utils/showNotion";
 import { NOTION } from "../../constants/notion";
 import { ITrailer } from "../../models/cinema";
+import { useFromNavigate } from "../../hooks/useFromNavigate";
+import { LOGIN_ROUTE } from "../../constants/routesPathnames";
 
 import "./styles.scss";
 
@@ -18,27 +20,41 @@ type Props = {
 
 const Bookmark: React.FC<Props> = ({ isActive, preview, className }) => {
     const dispatch = useAppDispatch();
+    const navigateFrom = useFromNavigate();
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-    const handleBookmarkClick = async () => {
+    const handleBookmarkClick = async (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+
         if (isSubmitting) return;
         setIsSubmitting(true);
 
         if (isActive) {
             try {
-                await dispatch(deleteBookmark(preview.id));
+                await dispatch(deleteBookmark(preview.id)).unwrap();
                 showNotion(NOTION.SUCCESS, "Bookmark deleted");
             } catch (error) {
-                showNotion(NOTION.ERROR, "Failed to delete bookmark");
+                const err = error as any;
+                if (err.isAuthError) {
+                    navigateFrom(LOGIN_ROUTE);
+                } else {
+                    showNotion(NOTION.ERROR, err.message);
+                }
             } finally {
                 setIsSubmitting(false);
             }
         } else {
             try {
                 await dispatch(postBookmark(preview)).unwrap();
-                showNotion(NOTION.SUCCESS, "Bookmarked successfully");
+                showNotion(NOTION.SUCCESS, "Bookmark added");
             } catch (error) {
-                showNotion(NOTION.ERROR, "Failed to bookmark");
+                const err = error as any;
+                if (err.isAuthError) {
+                    navigateFrom(LOGIN_ROUTE);
+                } else {
+                    showNotion(NOTION.ERROR, err.message);
+                }
             } finally {
                 setIsSubmitting(false);
             }

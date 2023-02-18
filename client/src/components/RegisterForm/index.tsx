@@ -1,6 +1,5 @@
 import { Formik } from "formik";
 import React from "react";
-import { api } from "../../api";
 import { ALERT } from "../../constants/alertTypes";
 import ActionButton from "../ActionButton";
 import Alert from "../Alert";
@@ -8,6 +7,13 @@ import FormErrorMessage from "../FormElements/FormErrorMessage";
 import Input from "../FormElements/Input";
 import { registerScheme } from "./registerScheme";
 import { nanoid } from "@reduxjs/toolkit";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { registerUser } from "../../store/user/thunks/registerUser";
+import { USER_ROLES } from "../../constants/userRoles";
+import { showNotion } from "../../utils/showNotion";
+import { NOTION } from "../../constants/notion";
+import { useLocation, useNavigate } from "react-router-dom";
+import { HOME_ROUTE } from "../../constants/routesPathnames";
 
 import "./styles.scss";
 
@@ -20,6 +26,12 @@ interface Values {
 
 const RegisterForm: React.FC = () => {
     const [error, setError] = React.useState<string | null>(null);
+    const dispatch = useAppDispatch();
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || HOME_ROUTE;
+    console.log(from);
+    const navigate = useNavigate();
 
     const initialValues: Values = {
         email: "",
@@ -29,11 +41,10 @@ const RegisterForm: React.FC = () => {
     };
 
     const handleSubmit = async (values: Values) => {
-
         const { email, password, confirmPassword, nickname } = values;
 
         if (password !== confirmPassword) {
-            setError("Passwords do not match")
+            setError("Passwords do not match");
             return;
         }
 
@@ -41,26 +52,29 @@ const RegisterForm: React.FC = () => {
             email,
             password,
             nickname,
-            id: nanoid()
-        }
+            roles: [USER_ROLES.USER],
+            id: nanoid(),
+        };
 
         try {
-            const response = await api.post("users", newUser);
-            console.log(response);
+            const response = await dispatch(registerUser(newUser)).unwrap();
+            localStorage.setItem("token", response.accessToken);
+            showNotion(NOTION.SUCCESS, "Welcome");
+            navigate(from, { replace: true });
         } catch (error) {
-            console.log(error)
+            const err = error as any;
+            setError(err.message);
         }
     };
 
     return (
         <Formik
             onSubmit={handleSubmit}
-            onChange={() => setError(null)}
             initialValues={initialValues}
             validationSchema={registerScheme}
         >
             {({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => (
-                <form className="register-form" onSubmit={handleSubmit}>
+                <form className="register-form" onChange={() => setError(null)} onSubmit={handleSubmit}>
                     {error && <Alert className="register-form__alert" type={ALERT.ERROR} message={error} />}
                     <div className="register-form__item">
                         <Input
@@ -128,7 +142,7 @@ const RegisterForm: React.FC = () => {
                         type="submit"
                         colorType="success"
                     >
-                        Register
+                        {isSubmitting ? "Wait" : "Register"}
                     </ActionButton>
                 </form>
             )}

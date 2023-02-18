@@ -1,6 +1,5 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { api } from "../../api";
 import Preview from "../../components/Preview";
 import PreviewLoader from "../../components/Preview/PreviewLoader";
 import PreviewsWrapper from "../../components/PreviewsWrapper";
@@ -12,6 +11,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import EndListMessage from "../../components/EndListMessage";
 import CircleLoader from "../../components/CircleLoader";
 import { ITrailer } from "../../models/cinema";
+import TrailerService from "../../services/TrailerService";
 
 import "./styles.scss";
 
@@ -36,7 +36,7 @@ const MoviesPage: React.FC = () => {
             setError(null);
             setIsLoading(true);
             try {
-                const response = await api.get<ITrailer[]>("trailers", {
+                const response = await TrailerService.fetchTrailers({
                     params: {
                         type: CINEMA_TYPE.MOVIE,
                         q: searchParams.get("q"),

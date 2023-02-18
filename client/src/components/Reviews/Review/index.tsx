@@ -6,6 +6,8 @@ import ReviewDislike from "./ReviewDislike";
 import ReviewDeleteButton from "./ReviewDeleteButton";
 
 import "./styles.scss";
+import AccessCheck from "../../AccessCheck";
+import { USER_ROLES } from "../../../constants/userRoles";
 
 const Review: React.FC<IReview> = (review) => {
     const [isFull, setIsFull] = React.useState(false);
@@ -26,7 +28,9 @@ const Review: React.FC<IReview> = (review) => {
                 </button>
             )}
             <div className="review__actions">
-                <ReviewDeleteButton id={review.id} />
+                <AccessCheck roles={[USER_ROLES.ADMIN]}>
+                    <ReviewDeleteButton id={review.id} />
+                </AccessCheck>
                 <div className="review__actions-wrapper">
                     <ReviewLike {...review} />
                     <ReviewDislike {...review} />

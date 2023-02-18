@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../../api";
 import Actor from "../../components/Actor";
 import PageLoader from "../../components/PageLoader";
 import RetryError from "../../components/RetryError";
 import { IActor } from "../../models/actor";
+import ActorService from "../../services/ActorService";
 
 import "./styles.scss";
 
@@ -20,7 +20,7 @@ const ActorPage: React.FC = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await api.get("actors/" + id);
+            const response = await ActorService.fetchActortById(id);
             setActor(response.data);
         } catch (error) {
             const err = error as any;

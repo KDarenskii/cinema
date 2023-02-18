@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../../api";
 import Alert from "../../components/Alert";
 import Cinema from "../../components/Cinema";
 import PageLoader from "../../components/PageLoader";
 import Reviews from "../../components/Reviews";
 import { ALERT } from "../../constants/alertTypes";
 import { ICinema } from "../../models/cinema";
+import CinemaService from "../../services/CinemaService";
 
 import "./styles.scss";
 
@@ -22,7 +22,7 @@ const CinemaPage: React.FC = () => {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await api.get("cinemaDescriptions/" + id);
+                const response = await CinemaService.fetchCinemaById(id);
                 setCinema(response.data);
             } catch (error) {
                 const err = error as any;

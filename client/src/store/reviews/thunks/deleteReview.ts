@@ -1,10 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../../api";
+import axios from "axios";
+import { authApi } from "../../../api";
 
-export const deleteReview = createAsyncThunk<string, string>(
+type KnownError = {
+    isAuthError?: boolean;
+    message: string;
+}
+
+export const deleteReview = createAsyncThunk<string, string, { rejectValue: KnownError }>(
     "reviews/deleteReview", 
-    async function(id) {
-        await api.delete("reviews/" + id);
-        return id;
+    async function(id, { rejectWithValue }) {
+        try {
+            await authApi.delete("reviews/" + id);
+            return id;
+        } catch (error) {
+            const err = error as any;
+            if (axios.isAxiosError(err) && err.response && err.response.status === 401) {
+                return rejectWithValue({ isAuthError: true, message: "Failed to delete review" });
+            }
+            return rejectWithValue({ message: "Failed to delete review" });
+        }
     }
 )

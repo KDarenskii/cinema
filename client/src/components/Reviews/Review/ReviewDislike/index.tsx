@@ -4,13 +4,18 @@ import { useAppDispatch } from "../../../../hooks/useAppDispatch";
 import { IReview } from "../../../../models/review";
 import { putReview } from "../../../../store/reviews/thunks/putReview";
 import ActionButton from "../../../ActionButton";
+import { useFromNavigate } from "../../../../hooks/useFromNavigate";
+import { LOGIN_ROUTE } from "../../../../constants/routesPathnames";
+import { showNotion } from "../../../../utils/showNotion";
+import { NOTION } from "../../../../constants/notion";
 
 import "./styles.scss";
 
 const ReviewDislike: React.FC<IReview> = (review) => {
     const dispatch = useAppDispatch();
+    const navigateFrom = useFromNavigate();
 
-    const handleClick = () => {
+    const handleClick = async () => {
         const updatedReview = {
             ...review,
             isDisliked: !review.isDisliked,
@@ -19,7 +24,16 @@ const ReviewDislike: React.FC<IReview> = (review) => {
             likesAmount: review.isLiked ? review.likesAmount - 1 : review.likesAmount,
         };
 
-        dispatch(putReview(updatedReview));
+        try {
+            await dispatch(putReview(updatedReview)).unwrap();
+        } catch (error) {
+            const err = error as any;
+            if (err.isAuthError) {
+                navigateFrom(LOGIN_ROUTE);
+            } else {
+                showNotion(NOTION.ERROR, err.message);
+            }
+        }
     };
 
     return (

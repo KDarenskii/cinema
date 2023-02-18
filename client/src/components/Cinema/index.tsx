@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { api } from "../../api";
 import { CINEMA_TYPE } from "../../constants/cinemaType";
 import { ICinema, ITrailer } from "../../models/cinema";
 import formatNumber from "../../utils/formatNumber";
@@ -11,9 +10,11 @@ import DescriptionList from "../Description/DescriptionList";
 import DescriptionPoster from "../Description/DescriptionPoster";
 import Preview from "../Preview";
 import cn from "classnames";
-import CinemaWatchButton from "./CinemaWatchButton";
 import PreviewLoader from "../Preview/PreviewLoader";
 import RetryError from "../RetryError";
+import TrailerService from "../../services/TrailerService";
+import LightButton from "../LightButton";
+import ModalVideo from "react-modal-video";
 
 import "./styles.scss";
 
@@ -27,11 +28,13 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
     const [error, setError] = React.useState<string | null>(null);
     const [trailer, setTrailer] = React.useState({} as ITrailer);
 
+    const [isVideoActive, setIsVideoActive] = React.useState(false);
+
     const fetchTrailer = React.useCallback(async () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await api.get("trailers/" + cinema.id);
+            const response = await TrailerService.fetchTrailerById(cinema.id);
             setTrailer(response.data);
         } catch (error) {
             const err = error as any;
@@ -51,7 +54,7 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
                 <DescriptionPoster className="cinema__intro-poster" src={cinema.posterSrc} />
                 {error && <RetryError onClick={fetchTrailer} message={error} />}
                 {isLoading && <PreviewLoader className="cinema__intro-loader" />}
-                {!error && !isLoading && <Preview className="cinema__intro-preview" preview={trailer} />}
+                {!error && !isLoading && <Preview className="cinema__intro-preview" onClick={() => setIsVideoActive(true)} preview={trailer} />}
             </div>
             <div className="cinema__content">
                 <DescriptionHeader
@@ -62,7 +65,16 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
 
                 <DescriptionPoster className="cinema__content-intro-poster" src={cinema.posterSrc} />
 
-                <CinemaWatchButton className="cinema__content-btn" videoId={cinema.videoId} />
+                <LightButton className="cinema__content-btn" onClick={() => setIsVideoActive(true)}>
+                    Watch film
+                </LightButton>
+                <ModalVideo
+                    channel="youtube"
+                    youtube={{ autoplay: 1, mute: 1 }}
+                    isOpen={isVideoActive}
+                    videoId={cinema.videoId}
+                    onClose={() => setIsVideoActive(false)}
+                />
 
                 <div className="cinema__content-about">
                     <DescriptionInfo title={cinema.type === CINEMA_TYPE.MOVIE ? "About film" : "About serial"}>
@@ -80,7 +92,7 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
                     <DescriptionList className="cinema__content-about-list" title="Lead roles">
                         {cinema.actors &&
                             cinema.actors.map((actor, index) => (
-                                <Link className="cinema__content-about-link" to={"/actor/" + actor.id} key={index}>
+                                <Link className="cinema__content-about-link" to={"/cinema/actor/" + actor.id} key={index}>
                                     {actor.name}
                                 </Link>
                             ))}
@@ -95,7 +107,7 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
                 <div className="cinema__content-trailer">
                     {error && <RetryError onClick={fetchTrailer} message={error} />}
                     {isLoading && <PreviewLoader className="cinema__content-trailer-loader" />}
-                    {!error && !isLoading && <Preview className="cinema__content-trailer-preview" preview={trailer} />}
+                    {!error && !isLoading && <Preview className="cinema__content-trailer-preview" onClick={() => setIsVideoActive(true)} preview={trailer} />}
                 </div>
             </div>
         </section>

@@ -6,8 +6,8 @@ import Preview from "../Preview";
 import cn from "classnames";
 import PreviewLoader from "../Preview/PreviewLoader";
 import RetryError from "../RetryError";
-import { api } from "../../api";
 import { ITrailer } from "../../models/cinema";
+import TrendsService from "../../services/TrendsService";
 
 import "swiper/css";
 import "./styles.scss";
@@ -26,7 +26,7 @@ const Trending: React.FC<Props> = ({ className }) => {
         setError(null);
         setIsLoading(true);
         try {
-            const response = await api.get<ITrailer[]>("trends");
+            const response = await TrendsService.fetchTrends();
             setList(response.data);
         } catch (error) {
             const err = error as any;

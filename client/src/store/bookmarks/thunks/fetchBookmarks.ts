@@ -1,11 +1,17 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../../api";
+import { authApi } from "../../../api";
 import { ITrailer } from "../../../models/cinema";
+import { createAppAsyncThunk } from "../../createAppAsyncThunk";
+import { logoutUser } from "../../user/userSlice";
 
-export const fetchBookmarks = createAsyncThunk<ITrailer[]>(
+export const fetchBookmarks = createAppAsyncThunk<ITrailer[], undefined>(
     "bookmarks/fetchBookmarks",
-    async function() {
-        const response = await api.get<ITrailer[]>('bookmarks');
-        return response.data;
+    async function(_, { dispatch }) {
+        try {
+            const response = await authApi.get<ITrailer[]>('bookmarks');
+            return response.data;
+        } catch (error) {
+            dispatch(logoutUser());
+            throw new Error(error as any);
+        }
     }
 )
