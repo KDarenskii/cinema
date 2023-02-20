@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { isAxiosError } from "axios";
 import { AppDispatch } from "../..";
-import { authApi } from "../../../api";
+import UserService from "../../../services/UserService";
 import { logoutUser, setIsAuth } from "../userSlice";
 
 export const refreshUser = createAsyncThunk<void, undefined, { dispatch: AppDispatch }>(
@@ -11,11 +11,10 @@ export const refreshUser = createAsyncThunk<void, undefined, { dispatch: AppDisp
 
         if (token) {
             try {
-                await authApi.get("refresh");
+                await UserService.refreshUser();
                 dispatch(setIsAuth(true));
             } catch (error) {
-                const err = error as any;
-                if (axios.isAxiosError(err) && err.response && err.response.status === 401) {
+                if (isAxiosError(error) && error.response && error.response.status === 401) {
                     dispatch(logoutUser());
                 }
             }

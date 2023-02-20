@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ITrailer } from "../../models/cinema";
-import { deleteBookmark } from "./thunks/deleteBookmark";
-import { fetchBookmarks } from "./thunks/fetchBookmarks";
-import { postBookmark } from "./thunks/postBookmark";
+import { ITrailer } from "../../../models/cinema";
+import { deleteBookmark } from "../thunks/deleteBookmark";
+import { fetchBookmarks } from "../thunks/fetchBookmarks";
+import { postBookmark } from "../thunks/postBookmark";
 
-type SliceState = {
+export type BookmarkState = {
     isLoading: boolean;
     error: string | null;
     list: ITrailer[];
-}
+};
 
-const initialState: SliceState = {
+const initialState: BookmarkState = {
     isLoading: false,
     error: null,
-    list: []
-}
+    list: [],
+};
 
 const bookmarksSlice = createSlice({
     name: "bookmarks",
@@ -26,7 +26,7 @@ const bookmarksSlice = createSlice({
                 state.error = null;
                 state.isLoading = true;
                 state.list = [];
-            }) 
+            })
             .addCase(fetchBookmarks.fulfilled, (state, action) => {
                 state.error = null;
                 state.isLoading = false;
@@ -41,9 +41,9 @@ const bookmarksSlice = createSlice({
                 state.list.push(action.payload);
             })
             .addCase(deleteBookmark.fulfilled, (state, action) => {
-                state.list = state.list.filter(bookmark => bookmark.id !== action.payload);
-            })
-    }
-})
+                state.list = state.list.filter((bookmark) => bookmark.id !== action.payload);
+            });
+    },
+});
 
 export default bookmarksSlice.reducer;

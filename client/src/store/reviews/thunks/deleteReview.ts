@@ -1,17 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { authApi } from "../../../api";
+import ReviewService from "../../../services/ReviewService";
 
 type KnownError = {
     isAuthError?: boolean;
     message: string;
-}
+};
 
 export const deleteReview = createAsyncThunk<string, string, { rejectValue: KnownError }>(
-    "reviews/deleteReview", 
-    async function(id, { rejectWithValue }) {
+    "reviews/deleteReview",
+    async function (id, { rejectWithValue }) {
         try {
-            await authApi.delete("reviews/" + id);
+            await ReviewService.deleteReview(id);
             return id;
         } catch (error) {
             const err = error as any;
@@ -21,4 +21,4 @@ export const deleteReview = createAsyncThunk<string, string, { rejectValue: Know
             return rejectWithValue({ message: "Failed to delete review" });
         }
     }
-)
+);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authApi } from "../../../api";
+import BookmarkService from "../../../services/BookmarkService";
 import { createAppAsyncThunk } from "../../createAppAsyncThunk";
 import { logoutUser } from "../../user/userSlice";
 
@@ -12,7 +12,7 @@ export const deleteBookmark = createAppAsyncThunk<string, string, { rejectValue:
     "bookmark/deleteBookmark",
     async function (id, { dispatch, rejectWithValue }) {
         try {
-            await authApi.delete("bookmarks/" + id);
+            await BookmarkService.deleteBookmark(id);
             return id;
         } catch (error) {
             const err = error as any;

@@ -7,9 +7,9 @@ const store = configureStore({
     reducer: {
         bookmarks: bookmarksReducer,
         reviews: reviewsReducer,
-        user: userReducer
-    }
-})
+        user: userReducer,
+    },
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -9,7 +9,6 @@ interface Base {
 }
 
 export interface ITrailer extends Base {
-    videoUrl: string;
     imageSrc: string;
     duration: number;
 }

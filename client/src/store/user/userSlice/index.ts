@@ -1,23 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { USER_ROLES } from "../../constants/userRoles";
-import { IUser } from "../../models/user";
-import { loginUser } from "./thunks/loginUser";
-import { registerUser } from "./thunks/registerUser";
+import { USER_ROLES } from "../../../constants/userRoles";
+import { IUser } from "../../../models/user";
+import { loginUser } from "../thunks/loginUser";
+import { registerUser } from "../thunks/registerUser";
 
-type SliceState = {
+export type UserState = {
     isAuth: boolean;
     user: IUser;
-}
+};
 
-const initialState: SliceState = {
+const initialState: UserState = {
     isAuth: false,
     user: {
         roles: [USER_ROLES.USER, USER_ROLES.ADMIN],
         email: "",
         nickname: "",
-        id: ""
-    }
-}
+        id: "",
+    },
+};
 
 const userSlice = createSlice({
     name: "user",
@@ -29,10 +29,10 @@ const userSlice = createSlice({
         },
         setIsAuth: (state, action: PayloadAction<boolean>) => {
             state.isAuth = action.payload;
-        }
+        },
     },
     extraReducers: (builder) => {
-        builder 
+        builder
             .addCase(registerUser.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.isAuth = true;
@@ -40,10 +40,9 @@ const userSlice = createSlice({
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.isAuth = true;
-            })
-            
-    }
-})
+            });
+    },
+});
 
 export const { logoutUser, setIsAuth } = userSlice.actions;
 export default userSlice.reducer;

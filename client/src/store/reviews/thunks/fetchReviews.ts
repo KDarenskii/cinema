@@ -1,35 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../../api";
+import { TFetchReviewsParams } from "../../../models/params/fetchReviewsParams";
 import { IReview } from "../../../models/review";
+import ReviewService from "../../../services/ReviewService";
 
-type Params = {
-    cinemaId: string;
-    type?: string | null;
-    page?: number;
-    limit?: number;
-};
-
-type Response = {
-    totalAmount: number;
+type ReturnPayload = {
+    totalCount: number;
     reviews: IReview[];
 }
 
-export const fetchReviews = createAsyncThunk<Response, Params>(
+export const fetchReviews = createAsyncThunk<ReturnPayload, TFetchReviewsParams>(
     "reviews/fetchReviews",
-    async function ({ cinemaId, page = 1, limit = 3, type }) {
-        const response = await api.get<IReview[]>("reviews", {
-            params: {
-                cinemaId,
-                type,
-                _limit: limit,
-                _page: page,
-                _sort: "date",
-                _order: "desc"
-            },
-        });
+    async function ({ cinemaId, type, page = 1, limit = 3 }) {
+        const response = await ReviewService.fetchReviews({ cinemaId, type, page, limit });
         return {
             reviews: response.data,
-            totalAmount: Number(response.headers["x-total-count"])
+            totalCount: Number(response.headers["x-total-count"])
         };
     }
 );

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { authApi } from "../../../api";
 import { ITrailer } from "../../../models/cinema";
+import BookmarkService from "../../../services/BookmarkService";
 import { createAppAsyncThunk } from "../../createAppAsyncThunk";
 import { logoutUser } from "../../user/userSlice";
 
@@ -13,7 +13,7 @@ export const postBookmark = createAppAsyncThunk<ITrailer, ITrailer, { rejectValu
     "bookmark/postBookmark",
     async function (bookmark, { dispatch, rejectWithValue }) {
         try {
-            const response = await authApi.post<ITrailer>("bookmarks", bookmark);
+            const response = await BookmarkService.postBookmark(bookmark);
             return response.data;
         } catch (error) {
             const err = error as any;

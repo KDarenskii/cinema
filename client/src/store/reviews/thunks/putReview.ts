@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { authApi } from "../../../api";
 import { IReview } from "../../../models/review";
+import ReviewService from "../../../services/ReviewService";
 
 type KnownError = {
     isAuthError?: boolean;
@@ -12,7 +12,7 @@ export const putReview = createAsyncThunk<IReview, IReview, { rejectValue: Known
     "reviews/putReview",
     async function (review, { rejectWithValue }) {
         try {
-            const response = await authApi.put("reviews/" + review.id, review);
+            const response = await ReviewService.putReview(review);
             return response.data;
         } catch (error) {
             const err = error as any;

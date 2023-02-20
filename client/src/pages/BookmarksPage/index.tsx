@@ -14,7 +14,6 @@ import { fetchBookmarks } from "../../store/bookmarks/thunks/fetchBookmarks";
 import "./styles.scss";
 
 const BookmarksPage: React.FC = () => {
-    
     const { isLoading, error, bookmarks } = useAppSelector(selectBookmarks);
     const dispatch = useAppDispatch();
 

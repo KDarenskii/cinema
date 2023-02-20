@@ -20,7 +20,7 @@ const ReviewsList: React.FC<Props> = React.memo(({ id }) => {
     const [page, setPage] = React.useState(1);
 
     const [searchParams] = useSearchParams();
-    const { isLoading, error, list, amounts } = useAppSelector(selectReviews);
+    const { isLoading, error, list, totalCount } = useAppSelector(selectReviews);
     const dispatch = useAppDispatch();
 
     React.useEffect(() => {
@@ -36,7 +36,7 @@ const ReviewsList: React.FC<Props> = React.memo(({ id }) => {
         <InfiniteScroll
             next={() => setPage((prev) => prev + 1)}
             dataLength={list.length}
-            hasMore={list.length < amounts.total}
+            hasMore={list.length < totalCount}
             loader={isLoading && <CircleLoader />}
             style={{ overflow: "initial" }}
             endMessage={
