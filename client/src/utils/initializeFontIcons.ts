@@ -15,7 +15,7 @@ import {
     faChevronDown,
     faSignOutAlt,
     faLock,
-    faFrownOpen
+    faFrownOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 // ------ Regular Icons ------ //
@@ -25,22 +25,24 @@ import {
     faThumbsDown as regulatThumbsDown,
 } from "@fortawesome/free-regular-svg-icons";
 
-library.add(
-    faBookmark,
-    faVideo,
-    faHome,
-    faFilm,
-    faTv,
-    faUser,
-    faSearch,
-    regularBookmark,
-    faThumbsDown,
-    faThumbsUp,
-    regularThumsUp,
-    regulatThumbsDown,
-    faTrashAlt,
-    faChevronDown,
-    faSignOutAlt,
-    faLock,
-    faFrownOpen
-);
+export const initializeFontIcons = () => {
+    library.add(
+        faBookmark,
+        faVideo,
+        faHome,
+        faFilm,
+        faTv,
+        faUser,
+        faSearch,
+        regularBookmark,
+        faThumbsDown,
+        faThumbsUp,
+        regularThumsUp,
+        regulatThumbsDown,
+        faTrashAlt,
+        faChevronDown,
+        faSignOutAlt,
+        faLock,
+        faFrownOpen
+    );
+};

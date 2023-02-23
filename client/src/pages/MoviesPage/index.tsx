@@ -14,6 +14,7 @@ import { ITrailer } from "../../models/cinema";
 import TrailerService from "../../services/TrailerService";
 
 import "./styles.scss";
+import axios, { CancelTokenSource } from "axios";
 
 const MoviesPage: React.FC = () => {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -32,7 +33,7 @@ const MoviesPage: React.FC = () => {
     }, [searchParams]);
 
     const fetchMovies = React.useCallback(
-        async (page: number) => {
+        async (page: number, cancelToken?: CancelTokenSource) => {
             setError(null);
             setIsLoading(true);
             try {
@@ -43,6 +44,7 @@ const MoviesPage: React.FC = () => {
                         _page: page,
                         _limit: 12,
                     },
+                    cancelToken: cancelToken?.token,
                 });
                 setTotalCount(Number(response.headers["x-total-count"]));
                 setList((prev) => [...prev, ...response.data]);
@@ -57,7 +59,11 @@ const MoviesPage: React.FC = () => {
     );
 
     React.useEffect(() => {
-        fetchMovies(page);
+        const cancelToken = axios.CancelToken.source();
+        fetchMovies(page, cancelToken);
+        return () => {
+            cancelToken.cancel();
+        };
     }, [fetchMovies, searchParams, page]);
 
     return (

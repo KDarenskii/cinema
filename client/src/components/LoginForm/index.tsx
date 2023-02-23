@@ -53,7 +53,12 @@ const LoginForm: React.FC = () => {
             validationSchema={loginScheme}
         >
             {({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => (
-                <form className="login-form" onChange={() => setError(null)} onSubmit={handleSubmit}>
+                <form
+                    className="login-form"
+                    onChange={() => setError(null)}
+                    onSubmit={handleSubmit}
+                    aria-label="login form"
+                >
                     {error && <Alert className="login-form__alert" type={ALERT.ERROR} message={error} />}
                     <div className="login-form__item">
                         <Input
@@ -65,9 +70,16 @@ const LoginForm: React.FC = () => {
                             type="text"
                             placeholder="Email"
                             name="email"
+                            aria-label="email"
+                            aria-invalid={true}
+                            aria-errormessage="login-email-error"
                         />
                         {errors.email && touched.email && (
-                            <FormErrorMessage className="login-form__error" message={errors.email} />
+                            <FormErrorMessage
+                                className="login-form__error"
+                                message={errors.email}
+                                id="login-email-error"
+                            />
                         )}
                     </div>
                     <div className="login-form__item">
@@ -80,9 +92,16 @@ const LoginForm: React.FC = () => {
                             type="password"
                             placeholder="Password"
                             name="password"
+                            aria-label="password"
+                            aria-invalid={true}
+                            aria-errormessage="login-password-error"
                         />
                         {errors.password && touched.password && (
-                            <FormErrorMessage className="login-form__error" message={errors.password} />
+                            <FormErrorMessage
+                                className="login-form__error"
+                                message={errors.password}
+                                id="login-password-error"
+                            />
                         )}
                     </div>
                     <ActionButton className="login-form__btn" disabled={isSubmitting} type="submit" colorType="success">

@@ -30,7 +30,6 @@ const RegisterForm: React.FC = () => {
 
     const location = useLocation();
     const from = location.state?.from?.pathname || HOME_ROUTE;
-    console.log(from);
     const navigate = useNavigate();
 
     const initialValues: Values = {
@@ -68,13 +67,9 @@ const RegisterForm: React.FC = () => {
     };
 
     return (
-        <Formik
-            onSubmit={handleSubmit}
-            initialValues={initialValues}
-            validationSchema={registerScheme}
-        >
+        <Formik onSubmit={handleSubmit} initialValues={initialValues} validationSchema={registerScheme}>
             {({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => (
-                <form className="register-form" onChange={() => setError(null)} onSubmit={handleSubmit}>
+                <form className="register-form" onChange={() => setError(null)} onSubmit={handleSubmit} aria-label="register form">
                     {error && <Alert className="register-form__alert" type={ALERT.ERROR} message={error} />}
                     <div className="register-form__item">
                         <Input
@@ -86,9 +81,16 @@ const RegisterForm: React.FC = () => {
                             type="text"
                             placeholder="Email"
                             name="email"
+                            aria-label="email"
+                            aria-invalid={true}
+                            aria-errormessage="register-email-error"
                         />
                         {errors.email && touched.email && (
-                            <FormErrorMessage className="register-form__error" message={errors.email} />
+                            <FormErrorMessage
+                                className="register-form__error"
+                                message={errors.email}
+                                id="register-email-error"
+                            />
                         )}
                     </div>
                     <div className="register-form__item">
@@ -101,9 +103,16 @@ const RegisterForm: React.FC = () => {
                             type="text"
                             placeholder="Nickname"
                             name="nickname"
+                            aria-label="nickname"
+                            aria-invalid={true}
+                            aria-errormessage="register-nickname-error"
                         />
                         {errors.nickname && touched.nickname && (
-                            <FormErrorMessage className="register-form__error" message={errors.nickname} />
+                            <FormErrorMessage
+                                className="register-form__error"
+                                message={errors.nickname}
+                                id="register-nickname-error"
+                            />
                         )}
                     </div>
                     <div className="register-form__item">
@@ -116,9 +125,16 @@ const RegisterForm: React.FC = () => {
                             type="password"
                             placeholder="Password"
                             name="password"
+                            aria-label="password"
+                            aria-invalid={true}
+                            aria-errormessage="register-password-error"
                         />
                         {errors.password && touched.password && (
-                            <FormErrorMessage className="register-form__error" message={errors.password} />
+                            <FormErrorMessage
+                                className="register-form__error"
+                                message={errors.password}
+                                id="register-password-error"
+                            />
                         )}
                     </div>
                     <div className="register-form__item">
@@ -131,9 +147,16 @@ const RegisterForm: React.FC = () => {
                             type="password"
                             placeholder="Confirm password"
                             name="confirmPassword"
+                            aria-label="confirmPassword"
+                            aria-invalid={true}
+                            aria-errormessage="register-confirmPassword-error"
                         />
                         {errors.confirmPassword && touched.confirmPassword && (
-                            <FormErrorMessage className="register-form__error" message={errors.confirmPassword} />
+                            <FormErrorMessage
+                                className="register-form__error"
+                                message={errors.confirmPassword}
+                                id="register-confirmPassword-error"
+                            />
                         )}
                     </div>
                     <ActionButton

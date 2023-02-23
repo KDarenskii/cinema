@@ -77,7 +77,7 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
                 <div className={cn("review-creation", className)}>
                     {isPreviewing && <PreviewReview className="review-creation__preview" preview={values} />}
                     {!isPreviewing && (
-                        <form className="review-creation__form" onSubmit={handleSubmit}>
+                        <form className="review-creation__form" onSubmit={handleSubmit} aria-label="review form">
                             <div className="review-creation__form-item">
                                 <Select
                                     className="review-creation__form-select"
@@ -86,6 +86,9 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.type}
+                                    aria-label="type"
+                                    aria-invalid={true}
+                                    aria-errormessage="review-type-error"
                                 >
                                     <option className="review-creation__form-option" value={REVIEW_TYPE.NONE}>
                                         Choose review type...
@@ -101,7 +104,11 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
                                     </option>
                                 </Select>
                                 {errors.type && touched.type && (
-                                    <FormErrorMessage className="review-creation__form-error" message={errors.type} />
+                                    <FormErrorMessage
+                                        className="review-creation__form-error"
+                                        message={errors.type}
+                                        id="review-type-error"
+                                    />
                                 )}
                             </div>
                             <div className="review-creation__form-item">
@@ -114,9 +121,16 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.title}
+                                    aria-label="title"
+                                    aria-invalid={true}
+                                    aria-errormessage="review-title-error"
                                 />
                                 {errors.title && touched.title && (
-                                    <FormErrorMessage className="review-creation__form-error" message={errors.title} />
+                                    <FormErrorMessage
+                                        className="review-creation__form-error"
+                                        message={errors.title}
+                                        id="review-title-error"
+                                    />
                                 )}
                             </div>
                             <div className="review-creation__form-item">
@@ -128,9 +142,16 @@ const ReviewCreation: React.FC<Props> = ({ id, className, setIsCreating }) => {
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.text}
+                                    aria-label="text"
+                                    aria-invalid={true}
+                                    aria-errormessage="review-text-error"
                                 />
                                 {errors.text && touched.text && (
-                                    <FormErrorMessage className="review-creation__form-error" message={errors.text} />
+                                    <FormErrorMessage
+                                        className="review-creation__form-error"
+                                        message={errors.text}
+                                        id="review-text-error"
+                                    />
                                 )}
                             </div>
                             <ActionButton

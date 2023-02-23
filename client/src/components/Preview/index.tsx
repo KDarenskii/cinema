@@ -25,7 +25,7 @@ const Preview: React.FC<Props> = ({ preview, size, className, onClick }) => {
         <article className={cn("preview", className)} onClick={onClick}>
             <Link className="preview__body" to={"/cinema/film/" + id}>
                 <div className="preview__photo-box">
-                    <img className="preview__img" src={imageSrc} alt="Preview" />
+                    <img className="preview__img" src={imageSrc} alt="Preview" height={240} />
                     <Bookmark className="preview__bookmark" isActive={Boolean(isBookmarked)} preview={preview} />
                 </div>
                 <PreviewInfo className="preview__info" year={year} type={type} age={age} title={title} size={size} />

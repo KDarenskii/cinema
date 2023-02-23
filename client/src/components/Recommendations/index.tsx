@@ -1,3 +1,4 @@
+import axios, { CancelTokenSource } from "axios";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSearchParams } from "react-router-dom";
@@ -14,7 +15,6 @@ import SectionTitle from "../SectionTitle";
 import "./styles.scss";
 
 const Recommendations: React.FC = () => {
-
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
     const [list, setList] = React.useState<ITrailer[]>([]);
@@ -32,7 +32,7 @@ const Recommendations: React.FC = () => {
     const isSearching = searchParams.toString().length > 0;
 
     const fetchRecommendations = React.useCallback(
-        async (page: number) => {
+        async (page: number, cancelToken: CancelTokenSource) => {
             setError(null);
             setIsLoading(true);
             try {
@@ -42,6 +42,7 @@ const Recommendations: React.FC = () => {
                         _page: page,
                         _limit: 12,
                     },
+                    cancelToken: cancelToken.token,
                 });
                 setTotalCount(Number(response.headers["x-total-count"]));
                 setList((prev) => [...prev, ...response.data]);
@@ -56,7 +57,11 @@ const Recommendations: React.FC = () => {
     );
 
     React.useEffect(() => {
-        fetchRecommendations(page);
+        const cancelToken = axios.CancelToken.source();
+        fetchRecommendations(page, cancelToken);
+        return () => {
+            cancelToken.cancel();
+        };
     }, [fetchRecommendations, searchParams, page]);
 
     return (
@@ -92,7 +97,9 @@ const Recommendations: React.FC = () => {
                     </PreviewsWrapper>
                 </InfiniteScroll>
             )}
-            {error && <RetryError message={error} onClick={() => fetchRecommendations(page)} />}
+            {error && (
+                <RetryError message={error} onClick={() => fetchRecommendations(page, axios.CancelToken.source())} />
+            )}
         </section>
     );
 };

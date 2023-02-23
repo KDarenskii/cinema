@@ -8,8 +8,9 @@ import PreviewLoader from "../Preview/PreviewLoader";
 import RetryError from "../RetryError";
 import { ITrailer } from "../../models/cinema";
 import TrendsService from "../../services/TrendsService";
+import axios from "axios";
 
-import "swiper/css";
+import "swiper/swiper.min.css";
 import "./styles.scss";
 
 type Props = {
@@ -17,22 +18,26 @@ type Props = {
 };
 
 const Trending: React.FC<Props> = ({ className }) => {
-
-    const [isLoading, setIsLoading] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
     const [error, setError] = React.useState<string | null>(null);
     const [list, setList] = React.useState<ITrailer[]>([]);
 
     const fetchTrends = React.useCallback(async () => {
+        const cancelToken = axios.CancelToken.source();
+
         setError(null);
         setIsLoading(true);
         try {
-            const response = await TrendsService.fetchTrends();
+            const response = await TrendsService.fetchTrends({ cancelToken: cancelToken.token });
             setList(response.data);
         } catch (error) {
             const err = error as any;
             setError(err.message ?? null);
         } finally {
             setIsLoading(false);
+        }
+        return () => {
+            cancelToken.cancel();
         }
     }, []);
 
@@ -43,9 +48,9 @@ const Trending: React.FC<Props> = ({ className }) => {
     return (
         <section className={cn("trending", className)}>
             <SectionTitle className="trending__title" text="Trending" />
-            {error && <RetryError message={error} onClick={fetchTrends} />}
+            {error && <RetryError message={error} onClick={fetchTrends} data-testid="trends-error" />}
             {isLoading && (
-                <div className="trending__wrapper">
+                <div className="trending__wrapper" data-testid="trends-loading">
                     {[...new Array(3)].map((item, index) => (
                         <PreviewLoader className="trending__loader" key={index} />
                     ))}

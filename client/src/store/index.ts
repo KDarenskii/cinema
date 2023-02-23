@@ -1,17 +1,21 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, PreloadedState } from "@reduxjs/toolkit";
 import bookmarksReducer from "./bookmarks/bookmarksSlice";
 import reviewsReducer from "./reviews/reviewsSlice";
 import userReducer from "./user/userSlice";
 
-const store = configureStore({
-    reducer: {
-        bookmarks: bookmarksReducer,
-        reviews: reviewsReducer,
-        user: userReducer,
-    },
+const rootReducer = combineReducers({
+    bookmarks: bookmarksReducer,
+    reviews: reviewsReducer,
+    user: userReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+    return configureStore({
+        reducer: rootReducer,
+        preloadedState,
+    });
+};
 
-export default store;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];

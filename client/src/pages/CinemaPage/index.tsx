@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Alert from "../../components/Alert";
@@ -18,11 +19,12 @@ const CinemaPage: React.FC = () => {
     const [cinema, setCinema] = React.useState<ICinema>({} as ICinema);
 
     React.useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
         const fetchCinema = async () => {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await CinemaService.fetchCinemaById(id);
+                const response = await CinemaService.fetchCinemaById(id, { cancelToken: cancelToken.token });
                 setCinema(response.data);
             } catch (error) {
                 const err = error as any;
@@ -33,6 +35,9 @@ const CinemaPage: React.FC = () => {
         };
 
         fetchCinema();
+        return () => {
+            cancelToken.cancel();
+        };
     }, [id]);
 
     return (

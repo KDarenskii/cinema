@@ -1,3 +1,4 @@
+import axios, { CancelTokenSource } from "axios";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSearchParams } from "react-router-dom";
@@ -32,7 +33,7 @@ const SerialsPage: React.FC = () => {
     }, [searchParams]);
 
     const fetchSerials = React.useCallback(
-        async (page: number) => {
+        async (page: number, cancelToken?: CancelTokenSource) => {
             setError(null);
             setIsLoading(true);
             try {
@@ -43,6 +44,7 @@ const SerialsPage: React.FC = () => {
                         _page: page,
                         _limit: 12,
                     },
+                    cancelToken: cancelToken?.token,
                 });
                 setTotalCount(Number(response.headers["x-total-count"]));
                 setList((prev) => [...prev, ...response.data]);
@@ -57,7 +59,11 @@ const SerialsPage: React.FC = () => {
     );
 
     React.useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
         fetchSerials(page);
+        return () => {
+            cancelToken.cancel();
+        };
     }, [fetchSerials, searchParams, page]);
 
     return (

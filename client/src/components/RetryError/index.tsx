@@ -12,7 +12,7 @@ type Props = {
 
 const RetryError: React.FC<Props> = ({ message, onClick }) => {
     return (
-        <div className="retry-error">
+        <div className="retry-error" data-testid="retry-error">
             <Alert type={ALERT.ERROR} message={message} />
             <LightButton className="retry-error__btn" onClick={onClick}>Retry</LightButton>
         </div>

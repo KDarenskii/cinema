@@ -1,18 +1,24 @@
 @import "../../assets/styles/vars.scss";
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    padding: 15px;
-    border-radius: 20px;
-    background-color: $blue;
-    @media (max-width: $tablet) {
-        height: 60px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
+    // .sidebar__body
+    &__body {
+        position: sticky;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        padding: 15px;
+        border-radius: 20px;
+        background-color: $blue;
+        @media (max-width: $tablet) {
+            width: 100%;
+            height: 60px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
     }
     // .sidebar__logo-icon
     &__logo-icon {

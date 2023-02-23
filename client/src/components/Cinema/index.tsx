@@ -15,6 +15,7 @@ import RetryError from "../RetryError";
 import TrailerService from "../../services/TrailerService";
 import LightButton from "../LightButton";
 import ModalVideo from "react-modal-video";
+import axios, { CancelTokenSource } from "axios";
 
 import "./styles.scss";
 
@@ -30,11 +31,11 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
 
     const [isVideoActive, setIsVideoActive] = React.useState(false);
 
-    const fetchTrailer = React.useCallback(async () => {
+    const fetchTrailer = React.useCallback(async (cancelToken: CancelTokenSource) => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await TrailerService.fetchTrailerById(cinema.id);
+            const response = await TrailerService.fetchTrailerById(cinema.id, { cancelToken: cancelToken.token });
             setTrailer(response.data);
         } catch (error) {
             const err = error as any;
@@ -45,14 +46,18 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
     }, [cinema.id]);
 
     React.useEffect(() => {
-        fetchTrailer();
+        const cancelToken = axios.CancelToken.source();
+        fetchTrailer(cancelToken);
+        return () => {
+            cancelToken.cancel();
+        }
     }, [fetchTrailer]);
 
     return (
         <section className={cn("cinema", className)}>
             <div className="cinema__intro">
                 <DescriptionPoster className="cinema__intro-poster" src={cinema.posterSrc} />
-                {error && <RetryError onClick={fetchTrailer} message={error} />}
+                {error && <RetryError onClick={() => fetchTrailer(axios.CancelToken.source())} message={error} />}
                 {isLoading && <PreviewLoader className="cinema__intro-loader" />}
                 {!error && !isLoading && <Preview className="cinema__intro-preview" onClick={() => setIsVideoActive(true)} preview={trailer} />}
             </div>
@@ -105,7 +110,7 @@ const Cinema: React.FC<Props> = ({ cinema, className }) => {
                 </div>
 
                 <div className="cinema__content-trailer">
-                    {error && <RetryError onClick={fetchTrailer} message={error} />}
+                    {error && <RetryError onClick={() => fetchTrailer(axios.CancelToken.source())} message={error} />}
                     {isLoading && <PreviewLoader className="cinema__content-trailer-loader" />}
                     {!error && !isLoading && <Preview className="cinema__content-trailer-preview" onClick={() => setIsVideoActive(true)} preview={trailer} />}
                 </div>

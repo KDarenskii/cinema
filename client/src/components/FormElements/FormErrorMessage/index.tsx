@@ -5,11 +5,12 @@ import "./styles.scss";
 
 type Props = {
     message: string;
+    id?: string;
     className?: string;
 };
 
-const FormErrorMessage: React.FC<Props> = ({ message, className }) => {
-    return <p className={cn("form-error-message", className)}>{message}</p>;
+const FormErrorMessage: React.FC<Props> = ({ message, className, id }) => {
+    return <p className={cn("form-error-message", className)} id={id}>{message}</p>;
 };
 
 export default FormErrorMessage;
