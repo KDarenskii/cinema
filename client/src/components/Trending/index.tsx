@@ -38,7 +38,7 @@ const Trending: React.FC<Props> = ({ className }) => {
         }
         return () => {
             cancelToken.cancel();
-        }
+        };
     }, []);
 
     React.useEffect(() => {

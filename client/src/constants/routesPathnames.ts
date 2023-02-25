@@ -7,4 +7,4 @@ export const ACTOR_ROUTE = "/cinema/actor/:id";
 export const REGISTER_ROUTE = "/cinema/registration";
 export const LOGIN_ROUTE = "/cinema/login";
 export const UNAUTHORIZED_ROUTE = "/cinema/unauthorized";
-export const MISSING_ROUTE = "/cinema/*";
+export const MISSING_ROUTE = "/*";

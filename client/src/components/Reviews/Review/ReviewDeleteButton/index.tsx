@@ -24,7 +24,7 @@ const ReviewDeleteButton: React.FC<Props> = ({ id }) => {
             showNotion(NOTION.SUCCESS, "Review was deleted");
         } catch (error) {
             const err = error as any;
-            if (err?.isAuthError) { 
+            if (err?.isAuthError) {
                 navigateFrom(LOGIN_ROUTE);
             } else {
                 showNotion(NOTION.ERROR, err.message);

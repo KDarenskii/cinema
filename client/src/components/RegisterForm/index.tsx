@@ -16,6 +16,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../constants/routesPathnames";
 
 import "./styles.scss";
+import { fetchBookmarks } from "../../store/bookmarks/thunks/fetchBookmarks";
 
 interface Values {
     email: string;
@@ -58,6 +59,7 @@ const RegisterForm: React.FC = () => {
         try {
             const response = await dispatch(registerUser(newUser)).unwrap();
             localStorage.setItem("token", response.accessToken);
+            dispatch(fetchBookmarks());
             showNotion(NOTION.SUCCESS, "Welcome");
             navigate(from, { replace: true });
         } catch (error) {
@@ -69,7 +71,12 @@ const RegisterForm: React.FC = () => {
     return (
         <Formik onSubmit={handleSubmit} initialValues={initialValues} validationSchema={registerScheme}>
             {({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => (
-                <form className="register-form" onChange={() => setError(null)} onSubmit={handleSubmit} aria-label="register form">
+                <form
+                    className="register-form"
+                    onChange={() => setError(null)}
+                    onSubmit={handleSubmit}
+                    aria-label="register form"
+                >
                     {error && <Alert className="register-form__alert" type={ALERT.ERROR} message={error} />}
                     <div className="register-form__item">
                         <Input

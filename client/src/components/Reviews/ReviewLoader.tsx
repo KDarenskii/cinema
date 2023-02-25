@@ -4,6 +4,7 @@ import ContentLoader from "react-content-loader";
 const ReviewLoader: React.FC = () => {
     return (
         <ContentLoader
+            data-testid="review-loader"
             speed={2}
             width={600}
             height={265}

@@ -1,5 +1,5 @@
 import { toast, ToastOptions } from "react-toastify";
-import { NOTION } from "../constants/notion"
+import { NOTION } from "../../constants/notion";
 
 const config: ToastOptions = {
     position: "top-right",
@@ -10,7 +10,7 @@ const config: ToastOptions = {
     draggable: true,
     progress: undefined,
     theme: "dark",
-}
+};
 
 export const showNotion = (type: NOTION, message: string) => {
     switch (type) {
@@ -21,4 +21,4 @@ export const showNotion = (type: NOTION, message: string) => {
         default:
             return;
     }
-}
+};

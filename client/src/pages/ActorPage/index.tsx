@@ -42,7 +42,7 @@ const ActorPage: React.FC = () => {
     return (
         <div className="actor-page">
             {error && <RetryError onClick={() => fetchActor(axios.CancelToken.source())} message={error} data-testid="actor-error" />}
-            {isLoading && <PageLoader data-testid="actor-loading" />}
+            {isLoading && <PageLoader />}
             {!error && !isLoading && <Actor actor={actor} />}
         </div>
     );

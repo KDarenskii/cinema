@@ -5,6 +5,7 @@ import { ALERT } from "../../constants/alertTypes";
 import { NOTION } from "../../constants/notion";
 import { HOME_ROUTE } from "../../constants/routesPathnames";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { fetchBookmarks } from "../../store/bookmarks/thunks/fetchBookmarks";
 import { loginUser } from "../../store/user/thunks/loginUser";
 import { showNotion } from "../../utils/showNotion";
 import ActionButton from "../ActionButton";
@@ -37,6 +38,7 @@ const LoginForm: React.FC = () => {
         try {
             const response = await dispatch(loginUser(values)).unwrap();
             localStorage.setItem("token", response.accessToken);
+            dispatch(fetchBookmarks());
             showNotion(NOTION.SUCCESS, "Welcome");
             navigate(from, { replace: true });
         } catch (error) {

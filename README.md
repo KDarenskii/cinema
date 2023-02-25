@@ -44,7 +44,11 @@
 
 -   [Sass (документация)](https://sass-lang.com/documentation/)
 
--   [Ahooks (документация)](https://ahooks.js.org/guide)
+-   [Jest (документация)](https://jestjs.io/docs/getting-started)
+
+-   [React Testing Library (документация)](https://testing-library.com/docs/react-testing-library/intro)
+
+-   [Mock Service Worker (документация)](https://mswjs.io/docs/getting-started/install)
 
 ### Серверная часть
 

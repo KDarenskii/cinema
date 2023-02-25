@@ -12,9 +12,9 @@ import EndListMessage from "../../components/EndListMessage";
 import CircleLoader from "../../components/CircleLoader";
 import { ITrailer } from "../../models/cinema";
 import TrailerService from "../../services/TrailerService";
+import axios, { CancelTokenSource } from "axios";
 
 import "./styles.scss";
-import axios, { CancelTokenSource } from "axios";
 
 const MoviesPage: React.FC = () => {
     const [isLoading, setIsLoading] = React.useState(false);

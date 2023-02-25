@@ -11,22 +11,22 @@ import {
     LOGIN_ROUTE,
     UNAUTHORIZED_ROUTE,
     MISSING_ROUTE,
-} from "../constants/routesPathnames";
-import { USER_ROLES } from "../constants/userRoles";
-import MainLayout from "../layouts/MainLayout/MainLayout";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import MissingPage from "../pages/MissingPage";
-import RegisterPage from "../pages/RegisterPage";
-import UnauthorizedPage from "../pages/UnauthorizedPage";
-import PageLoader from "./PageLoader";
-import ProtectedRoute from "./ProtectedRoute";
+} from "../../constants/routesPathnames";
+import { USER_ROLES } from "../../constants/userRoles";
+import MainLayout from "../../layouts/MainLayout/MainLayout";
+import HomePage from "../../pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
+import MissingPage from "../../pages/MissingPage";
+import RegisterPage from "../../pages/RegisterPage";
+import UnauthorizedPage from "../../pages/UnauthorizedPage";
+import PageLoader from "../PageLoader";
+import ProtectedRoute from "../ProtectedRoute";
 
-const Serials = lazy(() => import(/*webpackChunkName: "Serials"*/ "../pages/SerialsPage"));
-const Movies = lazy(() => import(/*webpackChunkName: "Movies"*/ "../pages/MoviesPage"));
-const Cinema = lazy(() => import(/*webpackChunkName: "Cinema"*/ "../pages/CinemaPage"));
-const Actor = lazy(() => import(/*webpackChunkName: "Actor"*/ "../pages/ActorPage"));
-const Bookmarks = lazy(() => import(/*webpackChunkName: "Bookmarks"*/ "../pages/BookmarksPage"));
+const Serials = lazy(() => import(/*webpackChunkName: "Serials"*/ "../../pages/SerialsPage"));
+const Movies = lazy(() => import(/*webpackChunkName: "Movies"*/ "../../pages/MoviesPage"));
+const Cinema = lazy(() => import(/*webpackChunkName: "Cinema"*/ "../../pages/CinemaPage"));
+const Actor = lazy(() => import(/*webpackChunkName: "Actor"*/ "../../pages/ActorPage"));
+const Bookmarks = lazy(() => import(/*webpackChunkName: "Bookmarks"*/ "../../pages/BookmarksPage"));
 
 const Router: React.FC = () => {
     return (

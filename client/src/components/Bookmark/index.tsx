@@ -66,6 +66,7 @@ const Bookmark: React.FC<Props> = ({ isActive, preview, className }) => {
             className={cn("bookmark", { "bookmark--active": isActive }, className)}
             onClick={handleBookmarkClick}
             disabled={isSubmitting}
+            aria-label="bookmark"
         >
             <FontAwesomeIcon icon={[`${isActive ? "fas" : "far"}`, "bookmark"]} className="bookmark__icon" />
         </button>

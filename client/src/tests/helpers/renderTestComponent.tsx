@@ -24,11 +24,9 @@ export const renderTestComponent = (
 ) => {
     const Wrapper = ({ children }: PropsWithChildren<{}>): JSX.Element => {
         return (
-            <Provider store={store}>
-                <MemoryRouter initialEntries={[initialRoute]}>
-                    {children}
-                </MemoryRouter>
-            </Provider>
+            <MemoryRouter initialEntries={[initialRoute]}>
+                <Provider store={store}>{children}</Provider>
+            </MemoryRouter>
         );
     };
     return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };

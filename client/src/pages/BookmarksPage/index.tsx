@@ -19,32 +19,35 @@ const BookmarksPage: React.FC = () => {
 
     return (
         <div className="bookmarks-page">
-            <section className="bookmarks-page__movies">
-                <SectionTitle className="bookmarks-page__title" text="Bookmarked Movies" />
-                {error && <RetryError message={error} onClick={() => dispatch(fetchBookmarks())} />}
-                {!error && bookmarks.movies.length < 1 && (
-                    <Alert type={ALERT.INFO} message={"You have't bookmarked any movie yet"} />
-                )}
-                <PreviewsWrapper>
-                    {isLoading && [...new Array(12)].map((item, index) => <PreviewLoader key={index} />)}
-                    {!error &&
-                        !isLoading &&
-                        bookmarks.movies.map((preview) => <Preview key={preview.id} preview={preview} />)}
-                </PreviewsWrapper>
-            </section>
-            <section className="bookmarks-page__serials">
-                <SectionTitle className="bookmarks-page__title" text="Bookmarked TV Series" />
-                {error && <RetryError message={error} onClick={() => dispatch(fetchBookmarks())} />}
-                {!error && bookmarks.serials.length < 1 && (
-                    <Alert type={ALERT.INFO} message={"You have't bookmarked any TV serial yet"} />
-                )}
-                <PreviewsWrapper>
-                    {isLoading && [...new Array(12)].map((item, index) => <PreviewLoader key={index} />)}
-                    {!error &&
-                        !isLoading &&
-                        bookmarks.serials.map((preview) => <Preview key={preview.id} preview={preview} />)}
-                </PreviewsWrapper>
-            </section>
+            {!error && (
+                <>
+                    <section className="bookmarks-page__movies">
+                        <SectionTitle className="bookmarks-page__title" text="Bookmarked Movies" />
+                        {!error && !isLoading && bookmarks.movies.length < 1 && (
+                            <Alert type={ALERT.INFO} message={"You have't bookmarked any movie yet"} />
+                        )}
+                        <PreviewsWrapper>
+                            {isLoading && [...new Array(8)].map((item, index) => <PreviewLoader key={index} />)}
+                            {!error &&
+                                !isLoading &&
+                                bookmarks.movies.map((preview) => <Preview key={preview.id} preview={preview} />)}
+                        </PreviewsWrapper>
+                    </section>
+                    <section className="bookmarks-page__serials">
+                        <SectionTitle className="bookmarks-page__title" text="Bookmarked TV Series" />
+                        {!error && !isLoading && bookmarks.serials.length < 1 && (
+                            <Alert type={ALERT.INFO} message={"You have't bookmarked any TV serial yet"} />
+                        )}
+                        <PreviewsWrapper>
+                            {isLoading && [...new Array(8)].map((item, index) => <PreviewLoader key={index} />)}
+                            {!error &&
+                                !isLoading &&
+                                bookmarks.serials.map((preview) => <Preview key={preview.id} preview={preview} />)}
+                        </PreviewsWrapper>
+                    </section>
+                </>
+            )}
+            {error && <RetryError message={error} onClick={() => dispatch(fetchBookmarks())} />}
         </div>
     );
 };

@@ -17,9 +17,11 @@ export const refreshUser = createAsyncThunk<void, undefined, { dispatch: AppDisp
                 if (isAxiosError(error) && error.response && error.response.status === 401) {
                     dispatch(logoutUser());
                 }
+                throw new Error("401 Unauthenticated");
             }
         } else {
             dispatch(logoutUser());
+            throw new Error("401 Unauthenticated");
         }
     }
 );

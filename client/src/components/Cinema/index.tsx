@@ -25,7 +25,7 @@ type Props = {
 };
 
 const Cinema: React.FC<Props> = ({ cinema, className }) => {
-    const [isLoading, setIsLoading] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
     const [error, setError] = React.useState<string | null>(null);
     const [trailer, setTrailer] = React.useState({} as ITrailer);
 

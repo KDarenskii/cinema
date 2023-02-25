@@ -12,9 +12,10 @@ const PreviewLoader: React.FC<Props> = ({ className }) => {
             width="100%"
             height="100%"
             viewBox="0 0 326 253"
+            data-testid="preview-loading"
             backgroundColor="#0e1834"
             foregroundColor="#1e1d3e"
-            className={className ?? ""}
+            className={className}
         >
             <rect x="0" y="0" rx="10" ry="10" width="326" height="208" />
             <rect x="0" y="215" rx="10" ry="10" width="40" height="14" />
